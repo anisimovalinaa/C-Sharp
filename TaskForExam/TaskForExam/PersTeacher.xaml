@@ -1,0 +1,43 @@
+﻿<Page x:Class="TaskForExam.PersTeacher"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskForExam"
+      mc:Ignorable="d" 
+      d:DesignHeight="569" d:DesignWidth="940"
+      Title="PersTeacher">
+
+    <Grid>
+        <DataGrid x:Name="tablePersTeacher" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="722" FontSize="15"  FontFamily="Times New Roman">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=surname}" ClipboardContentBinding="{x:Null}" Header="Фамилия" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=name}" ClipboardContentBinding="{x:Null}" Header="Имя" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=middle_name}" ClipboardContentBinding="{x:Null}" Header="Отчество" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=series}" ClipboardContentBinding="{x:Null}" Header="Серия паспорта" CanUserResize="False" Width="110"/>
+                <DataGridTextColumn Binding="{Binding Path=number}" ClipboardContentBinding="{x:Null}" Header="Номер паспорта" CanUserResize="False" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Path=sex}" ClipboardContentBinding="{x:Null}" Header="Пол" CanUserResize="False" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Path=city}" ClipboardContentBinding="{x:Null}" Header="Город" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=street}" ClipboardContentBinding="{x:Null}" Header="Улица" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=numberH}" ClipboardContentBinding="{x:Null}" Header="Дом" CanUserResize="False" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Path=flat}" ClipboardContentBinding="{x:Null}" Header="Кварира" CanUserResize="False" Width="70"/>
+                <DataGridTextColumn Binding="{Binding Path=phone_number}" ClipboardContentBinding="{x:Null}" Header="Номер телефона" CanUserResize="False" Width="115"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="154">
+            <MenuItem Header="File" Click="MenuItem_Click">
+                <MenuItem Header="Save as..." Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button Content="Показать всех преподавателей" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Margin="751,48,0,0" Height="34" Click="Button_Click"/>
+        <Label Content="Показать преподавателей &#xD;&#xA;с ученым званием:" HorizontalAlignment="Left" Margin="751,117,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="rank" HorizontalAlignment="Left" Margin="771,164,0,0" VerticalAlignment="Top" Width="120">
+            <TextBlock>Профессор</TextBlock>
+            <TextBlock>Доцент</TextBlock>
+            <TextBlock>Старший научный сотрудник</TextBlock>
+            <TextBlock>Ассистент</TextBlock>
+            <TextBlock>Младший научный сотрудник</TextBlock>
+        </ComboBox>
+        <Button Content="Показать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="797,205,0,0" Click="Button_Click_1"/>
+    </Grid>
+</Page>

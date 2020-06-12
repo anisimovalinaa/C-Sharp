@@ -1,0 +1,28 @@
+﻿<Window x:Class="TaskForExam.AddRating"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskForExam"
+        mc:Ignorable="d"
+        Title="AddRating" Height="450" Width="328">
+    <Grid>
+        <Label Content="Тип:" HorizontalAlignment="Left" Margin="33,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Группа:" HorizontalAlignment="Left" Margin="33,130,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дисциплина:" HorizontalAlignment="Left" Margin="27,182,0,0" VerticalAlignment="Top"/>
+        <Label Content="Студент:" HorizontalAlignment="Left" Margin="39,242,0,0" VerticalAlignment="Top"/>
+        <Label Content="Оценка:" HorizontalAlignment="Left" Margin="45,308,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="type" HorizontalAlignment="Left" Margin="117,84,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="type_SelectionChanged">
+            <TextBlock>Зачет</TextBlock>
+            <TextBlock>Экзамен</TextBlock>
+            <TextBlock>Дифференцированный зачет</TextBlock>
+        </ComboBox>
+        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="117,134,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="group_SelectionChanged"/>
+        <ComboBox x:Name="mark" HorizontalAlignment="Left" Margin="124,308,0,0" VerticalAlignment="Top" Width="120"></ComboBox>
+        <ComboBox x:Name="Discipline" HorizontalAlignment="Left" Margin="124,196,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="student" HorizontalAlignment="Left" Margin="124,263,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="108,364,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="147,44,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="semester_SelectionChanged"></ComboBox>
+        <Label Content="Семестр:" HorizontalAlignment="Left" Margin="39,44,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
