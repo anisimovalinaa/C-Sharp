@@ -34,8 +34,18 @@ namespace TaskForExam
             teacher_pers.Background = Brushes.LightGray;
             discipline.Background = Brushes.LightGray;
             record.Background = Brushes.LightGray;
-            
+            group.Background = Brushes.LightGray;
+            teacher.Foreground = Brushes.Black;
+            list.Foreground = Brushes.Black;
+            student.Foreground = Brushes.Black;
+            discipline.Foreground = Brushes.Black;
+            record.Foreground = Brushes.Black;
+            teacher_pers.Foreground = Brushes.Black;
+            student_pers.Foreground = Brushes.Black;
+            group.Foreground = Brushes.Black;
+
             button.Background = Brushes.SteelBlue;
+            button.Foreground = Brushes.White;
         }
 
         private void teacher_Click(object sender, RoutedEventArgs e)
@@ -78,6 +88,18 @@ namespace TaskForExam
         {
             ButtonClick(record);
             frame.Navigate(new AcademicRecord());
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Close window = new Close(e);
+            window.ShowDialog();
+        }
+
+        private void group_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonClick(group);
+            frame.Navigate(new Groups());
         }
     }
 }

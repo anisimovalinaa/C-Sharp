@@ -127,6 +127,12 @@ namespace TaskForExam
         public string student { get; set; }
         public string mark { get; set; }
     }
+
+    public class columnGroup
+    {
+        public string number { get; set; }
+        public string spec { get; set; }
+    }
     public interface Operations
     {
         void Show(DataGrid table);
@@ -137,6 +143,7 @@ namespace TaskForExam
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
             TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table);
         void ShowGroup(DataGrid table, TextBox group);
+        void ShowGroups(DataGrid table);
     }
     public interface TeacherInterface
     {
@@ -819,6 +826,24 @@ namespace TaskForExam
                     });
                 }
             }
+        }
+        public void ShowGroups(DataGrid table)
+        {
+            string comStr = "SELECT g.number, s.name " +
+                "FROM `group` g " +
+                "LEFT OUTER JOIN `speciality` s ON s.id = g.speciality ";
+            MySqlCommand com = new MySqlCommand(comStr, myConnection);
+            MySqlDataReader reader = com.ExecuteReader();
+
+            while(reader.Read())
+            {
+                table.Items.Add(new columnGroup
+                {
+                    number = reader[0].ToString(),
+                    spec = reader[1].ToString()
+                });
+            }
+            reader.Close();
         }
         public void ShowPersGroup(DataGrid table, TextBox group)
         {

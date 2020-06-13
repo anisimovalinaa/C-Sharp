@@ -5,24 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="AddRating" Height="450" Width="328">
+        Title="Добавить успеваемость" FontFamily="Times New Roman" Height="266.675" Width="347">
+
     <Grid>
-        <Label Content="Тип:" HorizontalAlignment="Left" Margin="33,72,0,0" VerticalAlignment="Top"/>
-        <Label Content="Группа:" HorizontalAlignment="Left" Margin="33,130,0,0" VerticalAlignment="Top"/>
-        <Label Content="Дисциплина:" HorizontalAlignment="Left" Margin="27,182,0,0" VerticalAlignment="Top"/>
-        <Label Content="Студент:" HorizontalAlignment="Left" Margin="39,242,0,0" VerticalAlignment="Top"/>
-        <Label Content="Оценка:" HorizontalAlignment="Left" Margin="45,308,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="type" HorizontalAlignment="Left" Margin="117,84,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="type_SelectionChanged">
-            <TextBlock>Зачет</TextBlock>
-            <TextBlock>Экзамен</TextBlock>
-            <TextBlock>Дифференцированный зачет</TextBlock>
-        </ComboBox>
-        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="117,134,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="group_SelectionChanged"/>
-        <ComboBox x:Name="mark" HorizontalAlignment="Left" Margin="124,308,0,0" VerticalAlignment="Top" Width="120"></ComboBox>
-        <ComboBox x:Name="Discipline" HorizontalAlignment="Left" Margin="124,196,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="student" HorizontalAlignment="Left" Margin="124,263,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="108,364,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="147,44,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="semester_SelectionChanged"></ComboBox>
-        <Label Content="Семестр:" HorizontalAlignment="Left" Margin="39,44,0,0" VerticalAlignment="Top"/>
+        <ScrollViewer Height="229" Width="320">
+            <GroupBox Width="320" Height="335">
+                <Grid Margin="0,0,-12,0">
+                    <Label Content="Тип:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="27,68,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Группа:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="27,107,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Дисциплина:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="24,149,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Студент:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="24,192,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Оценка:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="24,233,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="type" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,68,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="type_SelectionChanged">
+                        <TextBlock>Зачет</TextBlock>
+                        <TextBlock>Экзамен</TextBlock>
+                        <TextBlock>Дифференцированный зачет</TextBlock>
+                    </ComboBox>
+                    <ComboBox x:Name="group"  FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,107,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="group_SelectionChanged"/>
+                    <ComboBox x:Name="mark" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,233,0,0" VerticalAlignment="Top" Width="120"></ComboBox>
+                    <ComboBox x:Name="Discipline" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,149,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="student" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,192,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Добавить" BorderBrush="Transparent" Background="PowderBlue" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="102,280,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click" Height="23"/>
+                    <ComboBox x:Name="semester" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,32,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="semester_SelectionChanged"></ComboBox>
+                    <Label Content="Семестр:" HorizontalAlignment="Left" Margin="24,26,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </GroupBox>
+
+        </ScrollViewer>
+
     </Grid>
+
 </Window>

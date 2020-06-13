@@ -9,7 +9,7 @@
       Title="Teacher">
 
     <Grid>
-        <DataGrid x:Name="tableTeacher" HorizontalAlignment="Left" Height="510" Margin="35,27,0,0" VerticalAlignment="Top" IsReadOnly="False" Width="525" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="tableTeacher" HorizontalAlignment="Left" Height="510" Margin="35,27,0,0" VerticalAlignment="Top" IsReadOnly="False" Width="508" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path = surname}" ClipboardContentBinding="{x:Null}" Header="Фамилия" CanUserResize="False" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path = name}" ClipboardContentBinding="{x:Null}" Header="Имя" CanUserResize="False" Width="100"/>

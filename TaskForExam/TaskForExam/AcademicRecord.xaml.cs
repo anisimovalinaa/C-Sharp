@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TaskForExam
 {
@@ -30,19 +31,14 @@ namespace TaskForExam
             semester.ItemsSource = mas1;
             string[] mas2 = { "Зачет", "Экзамен", "Дифференцированный зачет"};
             type.ItemsSource = mas2;
+            string[] mas3 = { "..выберете тип, семестр и группу" };
+            disc.ItemsSource = mas3;
         }
         private void Show()
         {
             table.Items.Clear();
             ListInterface a = new ClassList();
             a.ShowRecord(table);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddRating window = new AddRating();
-            window.ShowDialog();
-            Show();
         }
 
         private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -77,12 +73,31 @@ namespace TaskForExam
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            table.Items.Clear();
-            ListInterface a = new ClassList();
-            a.ShowMarkGroup(table, group.Text, semester.Text, type.Text, disc.Text);
+            if (group.Text == "" || semester.Text == "" || type.Text == "" || disc.Text == "" || disc.Text == "..выберете тип, семестр и группу")
+                MessageBox.Show("Заполните все поля!");
+            else
+            {
+                table.Items.Clear();
+                ListInterface a = new ClassList();
+                a.ShowMarkGroup(table, group.Text, semester.Text, type.Text, disc.Text);
+            }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        delegate Excel.Workbook workbook(DataGrid table);
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            workbook wb = new workbook(Docs.TableToExcel);
+            Docs.SaveDocs(wb(table));
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddRating window = new AddRating();
+            window.ShowDialog();
+            Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             table.Items.Clear();
             Show();

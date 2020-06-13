@@ -9,12 +9,24 @@
       Title="Discipline">
 
     <Grid>
-        <DataGrid x:Name="tableDiscipline" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="703" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="tableDiscipline" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="708" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=discipline}" ClipboardContentBinding="{x:Null}" Header="Дисциплина" CanUserResize="False" Width="200"/>
+                <DataGridTextColumn Binding="{Binding Path=discipline}" ClipboardContentBinding="{x:Null}" Header="Дисциплина" CanUserResize="False" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path=hours}" ClipboardContentBinding="{x:Null}" Header="Часы" CanUserResize="False" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=semester}" ClipboardContentBinding="{x:Null}" Header="Семестр" CanUserResize="False" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=speciality}" ClipboardContentBinding="{x:Null}" Header="Направление" CanUserResize="False" Width="300"/>
+                <DataGridTextColumn Binding="{Binding Path=speciality}" ClipboardContentBinding="{x:Null}" Header="Направление" CanUserResize="False" Width="300">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <ComboBox x:Name="specComboBox" HorizontalAlignment="Left" Margin="780,88,0,0" VerticalAlignment="Top" Width="120">
