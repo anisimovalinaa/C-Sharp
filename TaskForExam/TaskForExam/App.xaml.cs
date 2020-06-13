@@ -144,6 +144,8 @@ namespace TaskForExam
             TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table);
         void ShowGroup(DataGrid table, TextBox group);
         void ShowGroups(DataGrid table);
+        void ShowGroupSpec(DataGrid table, string spec);
+        void InsertGroup(string number, string spec);
     }
     public interface TeacherInterface
     {
@@ -688,6 +690,25 @@ namespace TaskForExam
             }
             reader.Close();
         }
+        public void ShowGroupSpec(DataGrid table, string spec)
+        {
+            string comStr = "SELECT g.number, s.name " +
+                "FROM `group` g " +
+                "LEFT OUTER JOIN `speciality` s ON s.id = g.speciality " + 
+                "WHERE s.name = '" + spec + "'";
+            MySqlCommand com = new MySqlCommand(comStr, myConnection);
+            MySqlDataReader reader = com.ExecuteReader();
+
+            while (reader.Read())
+            {
+                table.Items.Add(new columnGroup
+                {
+                    number = reader[0].ToString(),
+                    spec = reader[1].ToString()
+                });
+            }
+            reader.Close();
+        }
         public void Show(DataGrid table)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
@@ -709,11 +730,25 @@ namespace TaskForExam
             }
             reader.Close();
         }
+        public void InsertGroup(string number, string spec)
+        {
+            string comStr1 = "SELECT count(*) FROM `group` WHERE `number` = '" + number + "'";
+            MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
+            object count = com1.ExecuteScalar();
+            if (Convert.ToInt32(count) == 0)
+            {
+                string comStr = "INSERT INTO `department`.`group`(`number`, `speciality`) " +
+                    "VALUES('" + number + "', (SELECT `id` FROM `speciality` WHERE `name` = '" + spec + "'))";
+                MySqlCommand com = new MySqlCommand(comStr, myConnection);
+                com.ExecuteNonQuery();
+            }
+            else MessageBox.Show("Такая группа уже есть!");
+        }
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
             TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table)
         {
             string comStr1 =
-                "INSERT INTO `department`.`pers_student` (`series` ,`number` ,`sex` ,`city` ,`street` ,`home`, `flat`, `phone_number`)" +
+                "INSERT INTO `department`.`pers_student` (`series` ,`number` ,`sex` ,`city` ,`street` ,`home`, `flat`, `phone_number`) " +
                 "VALUES('" + series.Text + "', '" + number.Text + "', '" + sex + "', '" + city.Text + "', '" + street.Text +
                 "', '" + numberH.Text + "', '" + flat.Text + "', '" + phone.Text + "')";
             MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);

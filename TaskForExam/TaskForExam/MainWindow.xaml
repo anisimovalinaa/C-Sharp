@@ -16,6 +16,6 @@
         <Button x:Name="list" BorderBrush="Transparent" Content="Ведомости" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="list_Click"/>
         <Button x:Name="discipline" BorderBrush="Transparent" Content="Дисциплины" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="discipline_Click"/>
         <Button x:Name="record" BorderBrush="Transparent" Content="Успеваемость" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,322,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="record_Click"></Button>
-        <Button x:Name="group" BorderBrush="Transparent" Content="Группы" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,379,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="group_Click"/>
+        <Button x:Name="group" BorderBrush="Transparent" Content="Группы" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,374,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="group_Click"/>
     </Grid>
 </Window>
