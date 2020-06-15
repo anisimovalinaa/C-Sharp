@@ -46,9 +46,13 @@ namespace TaskForExam
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            tableStudent.Items.Clear();
-            StudentInterface a = new ClassStudent();
-            a.ShowGroup(tableStudent, group.Text);
+            if (group.Text == "") MessageBox.Show("Заполните все поля!");
+            else
+            {
+                tableStudent.Items.Clear();
+                StudentInterface a = new ClassStudent();
+                a.ShowGroup(tableStudent, group.Text);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

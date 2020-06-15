@@ -41,7 +41,7 @@ namespace TaskForExam
             {
                 ListInterface a = new ClassList();
                 tableDiscipline.Items.Clear();
-                a.ShowSemester(tableDiscipline, specComboBox, semester);
+                a.ShowSemester(tableDiscipline, specComboBox.Text, semester.Text);
             }
         }
 

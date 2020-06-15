@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="AddList" Height="337" Width="365">
+        Title="AddList" Height="337" Width="365" FontFamily="Times New Roman" FontSize="15">
     <Grid>
-        <ComboBox x:Name="disc" HorizontalAlignment="Left" Margin="161,156,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="group" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="161,108,0,0" SelectionChanged="group_SelectionChanged"></ComboBox>
-        <ComboBox x:Name="teacher" HorizontalAlignment="Left" Margin="161,193,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="type" HorizontalAlignment="Left" Margin="161,63,0,0" VerticalAlignment="Top" Width="120" ></ComboBox>
-        <Label Content="Дисципина:" HorizontalAlignment="Left" Margin="55,156,0,0" VerticalAlignment="Top"/>
-        <Label Content="Группа:" HorizontalAlignment="Left" Margin="55,108,0,0" VerticalAlignment="Top"/>
-        <Label Content="Тип:" HorizontalAlignment="Left" Margin="55,59,0,0" VerticalAlignment="Top"/>
-        <Label Content="Преподаватель:" HorizontalAlignment="Left" Margin="55,189,0,0" VerticalAlignment="Top"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="125,256,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="161,21,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="semester_SelectionChanged"/>
-        <Label Content="Семестр" HorizontalAlignment="Left" Margin="55,21,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="disc" HorizontalAlignment="Left" Margin="161,154,0,0" VerticalAlignment="Top" Width="134" Height="25"/>
+        <ComboBox x:Name="group" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="161,108,0,0" SelectionChanged="group_SelectionChanged"></ComboBox>
+        <ComboBox x:Name="teacher" HorizontalAlignment="Left" Margin="161,193,0,0" VerticalAlignment="Top" Width="134"/>
+        <ComboBox x:Name="type" HorizontalAlignment="Left" Margin="161,63,0,0" VerticalAlignment="Top" Width="134" ></ComboBox>
+        <Label Content="Дисципина:" HorizontalAlignment="Left" Margin="48,160,0,0" VerticalAlignment="Top"/>
+        <Label Content="Группа:" HorizontalAlignment="Left" Margin="48,112,0,0" VerticalAlignment="Top"/>
+        <Label Content="Тип:" HorizontalAlignment="Left" Margin="48,63,0,0" VerticalAlignment="Top"/>
+        <Label Content="Преподаватель:" HorizontalAlignment="Left" Margin="48,193,0,0" VerticalAlignment="Top"/>
+        <Button Content="Добавить" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="125,256,0,0" VerticalAlignment="Top" Width="83" Click="Button_Click" Height="26"/>
+        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="161,21,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="semester_SelectionChanged"/>
+        <Label Content="Семестр" HorizontalAlignment="Left" Margin="48,25,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

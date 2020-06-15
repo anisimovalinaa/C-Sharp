@@ -63,12 +63,13 @@ namespace TaskForExam
         private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             student.SelectedItem = null;
-            ListInterface a = new ClassList();
-            student.ItemsSource = a.GetStudents(group.SelectedItem.ToString());
+            StudentInterface s = new ClassStudent();
+            ListInterface d = new ClassList();
+            student.ItemsSource = s.GetStudents(group.SelectedItem.ToString());
             if(type.Text != "" && semester.Text != "")
             {
                 Discipline.SelectedItem = null;
-                Discipline.ItemsSource = a.GetDisciplineGroup(group.SelectedItem.ToString(), type.Text, semester.Text);
+                Discipline.ItemsSource = d.GetDisciplineGroup(group.SelectedItem.ToString(), type.Text, semester.Text);
             }
         }
 
@@ -79,7 +80,7 @@ namespace TaskForExam
             else
             {
                 ListInterface a = new ClassList();
-                a.AddMark(semester, type, group, Discipline, student, mark);
+                a.AddMark(semester.Text, type.Text, group.Text, Discipline.Text, student.Text, mark.Text);
             }
         }
 

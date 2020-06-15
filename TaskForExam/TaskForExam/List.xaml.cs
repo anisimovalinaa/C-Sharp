@@ -39,17 +39,24 @@ namespace TaskForExam
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            tableList.Items.Clear();
-            ListInterface a = new ClassList();
-            a.ShowGroup(tableList, type.Text, group.Text);
+            if (type.Text == "" || group.Text == "") MessageBox.Show("Заполните все поля!");
+            else
+            {
+                tableList.Items.Clear();
+                ListInterface a = new ClassList();
+                a.ShowGroup(tableList, type.Text, group.Text);
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            tableList.Items.Clear();
-            ListInterface a = new ClassList();
-            a.ShowTeacher(tableList, type1.Text, teacher.Text);
-
+            if (type1.Text == "" || teacher.Text == "") MessageBox.Show("Заполните все поля!");
+            else
+            {
+                tableList.Items.Clear();
+                ListInterface a = new ClassList();
+                a.ShowTeacher(tableList, type1.Text, teacher.Text);
+            }
         }
 
         delegate Excel.Workbook workbook(DataGrid table);

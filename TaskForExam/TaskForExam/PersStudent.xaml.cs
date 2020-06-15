@@ -51,7 +51,7 @@ namespace TaskForExam
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (group.Text == "")
-                MessageBox.Show("Такой группы нет!", "ОШИБКА");
+                MessageBox.Show("Выберите номер группы!", "ОШИБКА");
             else
             {
                 tablePersStudent.Items.Clear();

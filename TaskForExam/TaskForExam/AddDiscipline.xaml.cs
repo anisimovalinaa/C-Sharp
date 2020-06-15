@@ -32,7 +32,7 @@ namespace TaskForExam
             else
             {
                 ListInterface a = new ClassList();
-                a.AddDiscipline(table, name, hours, semester, speciality);
+                a.AddDiscipline(name.Text, hours.Text, semester.Text, speciality.Text);
             }
         }
     }

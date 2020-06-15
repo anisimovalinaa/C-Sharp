@@ -143,18 +143,81 @@ namespace TaskForExam
     }
     public interface Operations
     {
+        /// <summary>
+        /// Выводит таблицу студентов или преподавателей
+        /// </summary>
+        /// <param name="table"></param>
         void Show(DataGrid table);
+
+        /// <summary>
+        /// Выводит таблицу контактов студентов или преподавателей
+        /// </summary>
+        /// <param name="table"></param>
         void ShowPers(DataGrid table);
     }
     public interface StudentInterface
     {
+        /// <summary>
+        /// Добавляет студента
+        /// </summary>
+        /// <param name="series"></param>
+        /// <param name="number"></param>
+        /// <param name="sex"></param>
+        /// <param name="city"></param>
+        /// <param name="street"></param>
+        /// <param name="numberH"></param>
+        /// <param name="flat"></param>
+        /// <param name="phone"></param>
+        /// <param name="surname"></param>
+        /// <param name="name"></param>
+        /// <param name="middle_name"></param>
+        /// <param name="group"></param>
+        /// <param name="spec"></param>
+        /// <param name="year"></param>
+        /// <param name="table"></param>
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
             TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table);
+
+        /// <summary>
+        /// Выводит список студентов указанной группы
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="group"></param>
         void ShowGroup(DataGrid table, string group);
+
+        /// <summary>
+        /// Выводит таблицу групп
+        /// </summary>
+        /// <param name="table"></param>
         void ShowGroups(DataGrid table);
+
+        /// <summary>
+        /// Выводит таблицу контактов студентов указанной группы
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="group"></param>
         void ShowPersGroup(DataGrid table, string group);
+
+        /// <summary>
+        /// Выводит список групп указанной специальности
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="spec"></param>
         void ShowGroupSpec(DataGrid table, string spec);
+
+        /// <summary>
+        /// Добавляет группу
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="spec"></param>
         void InsertGroup(string number, string spec);
+
+        /// <summary>
+        /// Получает список студентов указанной группы
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        List<string> GetStudents(string group);
 
         /// <summary>
         /// Получает список групп
@@ -164,10 +227,39 @@ namespace TaskForExam
     }
     public interface TeacherInterface
     {
+        /// <summary>
+        /// Добавляет преподавателя
+        /// </summary>
+        /// <param name="series"></param>
+        /// <param name="number"></param>
+        /// <param name="sex"></param>
+        /// <param name="city"></param>
+        /// <param name="street"></param>
+        /// <param name="home"></param>
+        /// <param name="flat"></param>
+        /// <param name="phone"></param>
+        /// <param name="surname"></param>
+        /// <param name="name"></param>
+        /// <param name="middle_name"></param>
+        /// <param name="rank"></param>
+        /// <param name="table"></param>
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox home, TextBox flat, TextBox phone, TextBox surname,
             TextBox name, TextBox middle_name, ComboBox rank, DataGrid table);
+
+        /// <summary>
+        /// Выводит список преподавателей с указанием ученого звания
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="rank"></param>
         void ShowRank(DataGrid table, string rank);
+
+        /// <summary>
+        /// Выводит контакты преподавателей с указанием ученого звания
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="rank"></param>
         void ShowPersRank(DataGrid table, string rank);
+
         /// <summary>
         /// Получает список преподавателей
         /// </summary>
@@ -213,18 +305,75 @@ namespace TaskForExam
         /// <param name="group"></param>
         /// <returns></returns>
         List<string> GetDisciplineSpec(string semester, string group);
-        List<string> GetStudents(string group);
+
+        /// <summary>
+        /// Добавляет ведомость
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="discipline"></param>
+        /// <param name="group"></param>
+        /// <param name="type"></param>
+        /// <param name="teacher"></param>
+        /// <param name="table"></param>
         void InsertList(string semester, string discipline, string group, string type, string teacher, DataGrid table);
+
+        /// <summary>
+        /// Выводит список дисциплин
+        /// </summary>
+        /// <param name="table"></param>
         void ShowDisciplines(DataGrid table);
-        void ShowSemester(DataGrid table, ComboBox speciality, ComboBox semester);
+
+        /// <summary>
+        /// Выводит список дисциплин с указанием семестра и направления
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="speciality"></param>
+        /// <param name="semester"></param>
+        void ShowSemester(DataGrid table, string speciality, string semester);
+
+        /// <summary>
+        /// Выводит успеваемость студентов конкретной группы с указанием семестра, типа ведомости и дисциплины
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="group"></param>
+        /// <param name="semester"></param>
+        /// <param name="type"></param>
+        /// <param name="disc"></param>
         void ShowMarkGroup(DataGrid table, string group, string semester, string type, string disc);
-        void AddDiscipline(DataGrid table, TextBox name, TextBox hours, ComboBox semester, ComboBox speciality);
-        void AddMark(ComboBox semester, ComboBox type, ComboBox group, ComboBox discipline, ComboBox student, ComboBox mark);
+
+        /// <summary>
+        /// Добавляет дисциплину
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="name"></param>
+        /// <param name="hours"></param>
+        /// <param name="semester"></param>
+        /// <param name="speciality"></param>
+        void AddDiscipline(string name, string hours, string semester, string speciality);
+
+        /// <summary>
+        /// Добаляет успеваемость студента по конкретной ведомости
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="type"></param>
+        /// <param name="group"></param>
+        /// <param name="discipline"></param>
+        /// <param name="student"></param>
+        /// <param name="mark"></param>
+        void AddMark(string semester, string type, string group, string discipline, string student, string mark);
+
+        /// <summary>
+        /// Выводит таблицу успеваемости студента
+        /// </summary>
+        /// <param name="table"></param>
         void ShowRecord(DataGrid table);
     }
-
-    public class ClassList: Connection, ListInterface
+    public class ClassList : Connection, ListInterface
     {
+        public ClassList()
+        {
+
+        }
         /// <summary>
         /// Выводит список ведомостей в DataGrid
         /// </summary>
@@ -239,7 +388,7 @@ namespace TaskForExam
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 table.Items.Add(new columnList()
                 {
@@ -251,6 +400,11 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Выводит список дисциплин
+        /// </summary>
+        /// <param name="table"></param>
         public void ShowDisciplines(DataGrid table)
         {
             string comStr = "SELECT d.name, d.hours, d.semester, s.name " +
@@ -259,7 +413,7 @@ namespace TaskForExam
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 table.Items.Add(new columnDiscipline()
                 {
@@ -290,7 +444,7 @@ namespace TaskForExam
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 disc.Add(reader[0].ToString());
             }
@@ -308,13 +462,13 @@ namespace TaskForExam
         public List<string> GetDisciplineGroup(string group, string type, string semester)
         {
             List<string> disc = new List<string>();
-            string comStr2 = "SELECT `name` FROM  `discipline` WHERE id = (SELECT `discipline` FROM `list` " + 
+            string comStr2 = "SELECT `name` FROM  `discipline` WHERE id = (SELECT `discipline` FROM `list` " +
                 "WHERE `group` = (SELECT `id` FROM `group` WHERE `number` = " + group + ") AND `type` = '" + type + "') " +
                 "AND `semester` = '" + semester + "'";
             MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
             MySqlDataReader reader = com2.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 disc.Add(reader[0].ToString());
             }
@@ -322,6 +476,15 @@ namespace TaskForExam
 
             return disc;
         }
+
+        /// <summary>
+        /// Выводит успеваемость студентов конкретной группы с указанием семестра, типа ведомости и дисциплины
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="group"></param>
+        /// <param name="semester"></param>
+        /// <param name="type"></param>
+        /// <param name="disc"></param>
         public void ShowMarkGroup(DataGrid table, string group, string semester, string type, string disc)
         {
             string comStr = "SELECT l.type, d.semester, g.number, d.name, s.surname, s.name, s.middle_name, e.mark " +
@@ -346,27 +509,42 @@ namespace TaskForExam
             }
             reader.Close();
         }
-        public void AddMark(ComboBox semester, ComboBox type, ComboBox group, ComboBox discipline, ComboBox student, ComboBox mark)
+
+        /// <summary>
+        /// Добаляет успеваемость студента по конкретной ведомости
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="type"></param>
+        /// <param name="group"></param>
+        /// <param name="discipline"></param>
+        /// <param name="student"></param>
+        /// <param name="mark"></param>
+        public void AddMark(string semester, string type, string group, string discipline, string student, string mark)
         {
-            string[] nameS = student.Text.Split(' ');
+            string[] nameS = student.Split(' ');
             string nameSpec = "SELECT s.name " +
                 "FROM `speciality` s " +
                 "LEFT OUTER JOIN `group` g ON g.speciality = s.id " +
-                "WHERE g.number = '" + group.Text + "'"; 
+                "WHERE g.number = '" + group + "'";
             string idSpec = "SELECT `id` FROM `speciality` WHERE `name` = (" + nameSpec + ")";
-            string idDisc = "SELECT `id` FROM `discipline` WHERE `name` = '" + discipline.Text + "' AND `speciality` = (" + idSpec + ") " +
-                "AND semester = '" + semester.Text + "'";
+            string idDisc = "SELECT `id` FROM `discipline` WHERE `name` = '" + discipline + "' AND `speciality` = (" + idSpec + ") " +
+                "AND semester = '" + semester + "'";
 
             string idStudent = "SELECT `id` FROM `student` WHERE `surname` = '" + nameS[0] + "' AND `name` = '" + nameS[1] + "' AND `middle_name` = '" +
-                nameS[2] + "' AND `group` = (SELECT `id` FROM `group` WHERE `number` = '" + group.Text + "')";
+                nameS[2] + "' AND `group` = (SELECT `id` FROM `group` WHERE `number` = '" + group + "')";
 
-            string idList = "SELECT `id` FROM `list` WHERE `type` = '" + type.Text + "' AND `group` = " +
-                "(SELECT `id` FROM `group` WHERE `number` = '" + group.Text + "') AND `discipline` = (" + idDisc + ")";
+            string idList = "SELECT `id` FROM `list` WHERE `type` = '" + type + "' AND `group` = " +
+                "(SELECT `id` FROM `group` WHERE `number` = '" + group + "') AND `discipline` = (" + idDisc + ")";
             string comStr1 = "INSERT INTO `department`.`educational_performance` (`list`, `student`, `mark`)" +
-                             "VALUES((" + idList + "), (" + idStudent + "), '" + mark.Text + "')";
+                             "VALUES((" + idList + "), (" + idStudent + "), '" + mark + "')";
             MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
             com1.ExecuteNonQuery();
         }
+
+        /// <summary>
+        /// Выводит таблицу успеваемости студентов
+        /// </summary>
+        /// <param name="table"></param>
         public void ShowRecord(DataGrid table)
         {
             string comStr = "SELECT l.type, d.semester, g.number, d.name, s.surname, s.name, s.middle_name, e.mark " +
@@ -379,7 +557,7 @@ namespace TaskForExam
             MySqlCommand com1 = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com1.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 table.Items.Add(new columnRecord()
                 {
@@ -390,12 +568,19 @@ namespace TaskForExam
             }
             reader.Close();
         }
-        public void ShowSemester(DataGrid table, ComboBox speciality, ComboBox semester)
+
+        /// <summary>
+        /// Выводит список дисциплин с указанием семестра и направления
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="speciality"></param>
+        /// <param name="semester"></param>
+        public void ShowSemester(DataGrid table, string speciality, string semester)
         {
             string comStr = "SELECT d.name, d.hours, d.semester, s.name " +
                 "FROM `discipline` d " +
-                "LEFT OUTER JOIN `speciality` s ON s.id = d.speciality " + 
-                "WHERE (d.semester = " + semester.Text + " AND s.name = '" + speciality.Text + "')";
+                "LEFT OUTER JOIN `speciality` s ON s.id = d.speciality " +
+                "WHERE (d.semester = " + semester + " AND s.name = '" + speciality + "')";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -473,34 +658,23 @@ namespace TaskForExam
             reader.Close();
         }
 
-        public List<string> GetStudents(string group)
+        /// <summary>
+        /// Добавляет дисциплину
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="name"></param>
+        /// <param name="hours"></param>
+        /// <param name="semester"></param>
+        /// <param name="speciality"></param>
+        public void AddDiscipline(string name, string hours, string semester, string speciality)
         {
-            string comStr1 = "SELECT `surname`, `name`, `middle_name` FROM `student` " +
-                "WHERE `group` = (SELECT `id` FROM `group` WHERE `number` = '" + group + "')";
-
-            MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
-            MySqlDataReader reader1 = com1.ExecuteReader();
-
-            List<string> list = new List<string>();
-
-            while (reader1.Read())
-            {
-                list.Add(reader1[0].ToString() + " " +
-                    reader1[1].ToString() + " " + reader1[2].ToString());
-            }
-            reader1.Close();
-            return list;
-        }
-
-        public void AddDiscipline(DataGrid table, TextBox name, TextBox hours, ComboBox semester, ComboBox speciality)
-        {
-            string comstr1 = "SELECT * FROM `speciality` " + 
-                "WHERE name = '" + speciality.Text + "'";
+            string comstr1 = "SELECT * FROM `speciality` " +
+                "WHERE name = '" + speciality + "'";
             MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
             MySqlDataReader reader1 = com1.ExecuteReader();
 
             string idS = "";
-            while(reader1.Read())
+            while (reader1.Read())
             {
                 idS = reader1[0].ToString();
             }
@@ -508,10 +682,20 @@ namespace TaskForExam
 
             string comStr2 =
                 "INSERT INTO `department`.`discipline` (`name` ,`hours` ,`semester` ,`speciality`)" +
-                "VALUES('" + name.Text + "', '" + hours.Text + "', '" + semester.Text + "', '" + idS + "')";
+                "VALUES('" + name + "', '" + hours + "', '" + semester + "', '" + idS + "')";
             MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
             com2.ExecuteNonQuery();
         }
+
+        /// <summary>
+        /// Добавляет ведомость
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="discipline"></param>
+        /// <param name="group"></param>
+        /// <param name="type"></param>
+        /// <param name="teacher"></param>
+        /// <param name="table"></param>
         public void InsertList(string semester, string discipline, string group, string type, string teacher, DataGrid table)
         {
             string comstr1 = "SELECT * FROM `discipline` WHERE name = '" + discipline + "' AND `semester` = '" + semester + "'";
@@ -519,7 +703,7 @@ namespace TaskForExam
             MySqlDataReader reader1 = com1.ExecuteReader();
 
             string idD = "";
-            while(reader1.Read())
+            while (reader1.Read())
             {
                 idD = reader1[0].ToString();
             }
@@ -530,7 +714,7 @@ namespace TaskForExam
             MySqlDataReader reader2 = com2.ExecuteReader();
 
             string idG = "";
-            while(reader2.Read())
+            while (reader2.Read())
             {
                 idG = reader2[0].ToString();
             }
@@ -542,7 +726,7 @@ namespace TaskForExam
             MySqlDataReader reader3 = com3.ExecuteReader();
 
             string idT = "";
-            while(reader3.Read())
+            while (reader3.Read())
             {
                 idT = reader3[0].ToString();
             }
@@ -562,6 +746,10 @@ namespace TaskForExam
                 teacher = teacher
             });
         }
+        ~ClassList()
+        {
+
+        }
     }
     public class ClassTeacher : Connection, Operations, TeacherInterface
     {
@@ -569,9 +757,14 @@ namespace TaskForExam
         {
 
         }
+
+        /// <summary>
+        /// Выводит список преподавателей
+        /// </summary>
+        /// <param name="table"></param>
         public void Show(DataGrid table)
         {
-            string comStr = "SELECT * FROM teacher";
+            string comStr = "SELECT * FROM teacher ORDER BY `surname`, `name`, `middle_name`";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -581,11 +774,17 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Выводит контакты преподавателей
+        /// </summary>
+        /// <param name="table"></param>
         public void ShowPers(DataGrid table)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
                 "FROM `teacher` a " +
-                "LEFT OUTER JOIN `pers_teacher` b ON b.id = a.id";
+                "LEFT OUTER JOIN `pers_teacher` b ON b.id = a.id " +
+                "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -608,13 +807,14 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
         /// <summary>
         /// Получает список преподавателей
         /// </summary>
         /// <returns></returns>
         public List<string> GetTeacher()
         {
-            string comstr = "SELECT `surname`, `name`, `middle_name` FROM `teacher`";
+            string comstr = "SELECT `surname`, `name`, `middle_name` FROM `teacher` ORDER BY `surname`, `name`, `middle_name`";
             MySqlCommand com = new MySqlCommand(comstr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -627,6 +827,23 @@ namespace TaskForExam
 
             return teachers;
         }
+
+        /// <summary>
+        /// Добавляет преподавателя
+        /// </summary>
+        /// <param name="series"></param>
+        /// <param name="number"></param>
+        /// <param name="sex"></param>
+        /// <param name="city"></param>
+        /// <param name="street"></param>
+        /// <param name="home"></param>
+        /// <param name="flat"></param>
+        /// <param name="phone"></param>
+        /// <param name="surname"></param>
+        /// <param name="name"></param>
+        /// <param name="middle_name"></param>
+        /// <param name="rank"></param>
+        /// <param name="table"></param>
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox home, TextBox flat, TextBox phone, TextBox surname,
             TextBox name, TextBox middle_name, ComboBox rank, DataGrid table)
         {
@@ -662,9 +879,15 @@ namespace TaskForExam
                 rank = rank.Text
             });
         }
+
+        /// <summary>
+        /// Выводит список преподавателей с указанием ученого звания
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="rank"></param>
         public void ShowRank(DataGrid table, string rank)
         {
-            string comstr1 = "SELECT * FROM teacher WHERE academic_rank = '" + rank + "'";
+            string comstr1 = "SELECT * FROM teacher WHERE academic_rank = '" + rank + "' ORDER BY `surname`, `name`, `middle_name`";
             MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
             MySqlDataReader reader = com1.ExecuteReader();
 
@@ -680,12 +903,19 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Выводит контакты преподавателей с указанием ученого звания
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="rank"></param>
         public void ShowPersRank(DataGrid table, string rank)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
                 "FROM `teacher` a " +
                 "LEFT OUTER JOIN `pers_teacher` b ON b.id = a.id " +
-                "WHERE a.academic_rank = '" + rank + "'";
+                "WHERE a.academic_rank = '" + rank + "' " +
+                "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -715,11 +945,20 @@ namespace TaskForExam
     }
     public class ClassStudent : Connection, Operations, StudentInterface
     {
+        public ClassStudent()
+        {
+
+        }
+        /// <summary>
+        /// Выводит контакты студентов
+        /// </summary>
+        /// <param name="table"></param>
         public void ShowPers(DataGrid table)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
                 "FROM `student` a " +
-                "LEFT OUTER JOIN `pers_student` b ON b.id = a.id";
+                "LEFT OUTER JOIN `pers_student` b ON b.id = a.id " +
+                "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -742,12 +981,19 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Выводит список групп указанной специальности
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="spec"></param>
         public void ShowGroupSpec(DataGrid table, string spec)
         {
             string comStr = "SELECT g.number, s.name " +
                 "FROM `group` g " +
-                "LEFT OUTER JOIN `speciality` s ON s.id = g.speciality " + 
-                "WHERE s.name = '" + spec + "'";
+                "LEFT OUTER JOIN `speciality` s ON s.id = g.speciality " +
+                "WHERE s.name = '" + spec + "' " +
+                "ORDER BY g.number";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -763,12 +1009,37 @@ namespace TaskForExam
         }
 
         /// <summary>
+        /// Получает список студентов указанной группы
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        public List<string> GetStudents(string group)
+        {
+            string comStr1 = "SELECT `surname`, `name`, `middle_name` FROM `student` " +
+                "WHERE `group` = (SELECT `id` FROM `group` WHERE `number` = '" + group + "') " +
+                "ORDER BY `surname`, `name`, `middle_name`";
+
+            MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
+            MySqlDataReader reader1 = com1.ExecuteReader();
+
+            List<string> list = new List<string>();
+
+            while (reader1.Read())
+            {
+                list.Add(reader1[0].ToString() + " " +
+                    reader1[1].ToString() + " " + reader1[2].ToString());
+            }
+            reader1.Close();
+            return list;
+        }
+
+        /// <summary>
         /// Получает список групп
         /// </summary>
         /// <returns></returns>
         public List<string> GetGroup()
         {
-            string comstr = "SELECT `number` FROM `group`";
+            string comstr = "SELECT `number` FROM `group` ORDER BY `number`";
             MySqlCommand com = new MySqlCommand(comstr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -782,11 +1053,16 @@ namespace TaskForExam
             return groups;
         }
 
+        /// <summary>
+        /// Выводит список студентов
+        /// </summary>
+        /// <param name="table"></param>
         public void Show(DataGrid table)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
                 "FROM `student` a " +
-                "LEFT OUTER JOIN `group` b ON b.id = a.group";
+                "LEFT OUTER JOIN `group` b ON b.id = a.group " +
+                "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -803,6 +1079,12 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Добавляет группу
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="spec"></param>
         public void InsertGroup(string number, string spec)
         {
             string comStr1 = "SELECT count(*) FROM `group` WHERE `number` = '" + number + "'";
@@ -817,6 +1099,25 @@ namespace TaskForExam
             }
             else MessageBox.Show("Такая группа уже есть!");
         }
+
+        /// <summary>
+        /// Добавляет студента
+        /// </summary>
+        /// <param name="series"></param>
+        /// <param name="number"></param>
+        /// <param name="sex"></param>
+        /// <param name="city"></param>
+        /// <param name="street"></param>
+        /// <param name="numberH"></param>
+        /// <param name="flat"></param>
+        /// <param name="phone"></param>
+        /// <param name="surname"></param>
+        /// <param name="name"></param>
+        /// <param name="middle_name"></param>
+        /// <param name="group"></param>
+        /// <param name="spec"></param>
+        /// <param name="year"></param>
+        /// <param name="table"></param>
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
             TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table)
         {
@@ -884,9 +1185,6 @@ namespace TaskForExam
             MySqlCommand com7 = new MySqlCommand(comStr7, myConnection);
             com7.ExecuteNonQuery();
 
-            //string comStr8 = "SELECT * FROM student WHERE id = " + id;
-            //MySqlCommand com8 = new MySqlCommand(comStr8, myConnection);
-            //MySqlDataReader reader5 = com8.ExecuteReader();
             table.Items.Add(new columnStudent()
             {
                 surname = surname.Text,
@@ -896,8 +1194,9 @@ namespace TaskForExam
                 year = year.Text
             });
         }
+
         /// <summary>
-        /// Показывает список группы
+        /// Показывает список указанной группы
         /// </summary>
         /// <param name="table">Таблица, куда помещается список</param>
         /// <param name="group">Номер группы</param>
@@ -917,7 +1216,8 @@ namespace TaskForExam
             string comStr2 = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
                 "FROM `student` a " +
                 "LEFT OUTER JOIN `group` b ON b.id = a.group " +
-                "WHERE a.group = " + idG;
+                "WHERE a.group = '" + idG + "' " +
+                "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
             MySqlDataReader reader2 = com2.ExecuteReader();
 
@@ -934,15 +1234,21 @@ namespace TaskForExam
             }
 
         }
+
+        /// <summary>
+        /// Выводит таблицу групп
+        /// </summary>
+        /// <param name="table"></param>
         public void ShowGroups(DataGrid table)
         {
             string comStr = "SELECT g.number, s.name " +
                 "FROM `group` g " +
-                "LEFT OUTER JOIN `speciality` s ON s.id = g.speciality ";
+                "LEFT OUTER JOIN `speciality` s ON s.id = g.speciality " +
+                "ORDER BY g.number";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 table.Items.Add(new columnGroup
                 {
@@ -952,6 +1258,12 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Выводит таблицу контактов студентов указанной группы
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="group"></param>
         public void ShowPersGroup(DataGrid table, string group)
         {
             string comstr1 = "SELECT * FROM `group`";
@@ -968,7 +1280,8 @@ namespace TaskForExam
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
             "FROM `student` a " +
             "LEFT OUTER JOIN `pers_student` b ON b.id = a.id " +
-            "WHERE a.group = " + idG;
+            "WHERE a.group = " + idG + 
+            "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -990,6 +1303,10 @@ namespace TaskForExam
                 });
             }
             reader.Close();
+        }
+        ~ClassStudent()
+        {
+
         }
     }
 }
