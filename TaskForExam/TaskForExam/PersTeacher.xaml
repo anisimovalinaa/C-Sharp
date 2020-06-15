@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="PersTeacher">
+      Title="PersTeacher" FontSize="15" FontFamily="Times New Roman">
 
     <Grid>
-        <DataGrid x:Name="tablePersTeacher" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="722" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="tablePersTeacher" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="900">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=surname}" ClipboardContentBinding="{x:Null}" Header="Фамилия" CanUserResize="False" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=name}" ClipboardContentBinding="{x:Null}" Header="Имя" CanUserResize="False" Width="100"/>
@@ -24,20 +24,18 @@
                 <DataGridTextColumn Binding="{Binding Path=phone_number}" ClipboardContentBinding="{x:Null}" Header="Номер телефона" CanUserResize="False" Width="115"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="154">
-            <MenuItem Header="File" Click="MenuItem_Click">
-                <MenuItem Header="Save as..." Click="MenuItem_Click"></MenuItem>
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить таблицу в Exel" Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Показать преподавателей" Height="22">
+                <MenuItem Header="Всех" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem x:Name="t1" Header="Профессоры" Click="t1_Click"></MenuItem>
+                <MenuItem x:Name="t2" Header="Доценты" Click="t2_Click"></MenuItem>
+                <MenuItem x:Name="t3" Header="Старшие научные сотрудники" Click="t3_Click"></MenuItem>
+                <MenuItem x:Name="t4" Header="Младшие научные сотрудники" Click="t4_Click"></MenuItem>
+                <MenuItem x:Name="t5" Header="Ассистенты" Click="t5_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <Button Content="Показать всех преподавателей" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Margin="751,48,0,0" Height="34" Click="Button_Click"/>
-        <Label Content="Показать преподавателей &#xD;&#xA;с ученым званием:" HorizontalAlignment="Left" Margin="751,117,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="rank" HorizontalAlignment="Left" Margin="771,164,0,0" VerticalAlignment="Top" Width="120">
-            <TextBlock>Профессор</TextBlock>
-            <TextBlock>Доцент</TextBlock>
-            <TextBlock>Старший научный сотрудник</TextBlock>
-            <TextBlock>Ассистент</TextBlock>
-            <TextBlock>Младший научный сотрудник</TextBlock>
-        </ComboBox>
-        <Button Content="Показать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="797,205,0,0" Click="Button_Click_1"/>
     </Grid>
 </Page>

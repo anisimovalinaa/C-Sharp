@@ -28,24 +28,24 @@
                 <DataGridTextColumn Binding="{Binding Path=mark}" ClipboardContentBinding="{x:Null}" Header="Оценка" CanUserResize="False" Width="60"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Expander Header="Показать успеваемость" HorizontalAlignment="Left" FontSize="15" Height="208" Margin="694,31,0,0" VerticalAlignment="Top" Width="246">
-            <Grid>
+        <Expander Header="Показать успеваемость" HorizontalAlignment="Left" FontSize="15" Height="208" Margin="677,29,0,0" VerticalAlignment="Top" Width="263">
+            <Grid Margin="0,0,8,0">
                 <Label Content="Группы:" Margin="0,10,0,-10"/>
-                <ComboBox x:Name="group" Height="20" SelectionChanged="group_SelectionChanged" Margin="119,10,10,155"/>
+                <ComboBox x:Name="group" Height="20" SelectionChanged="group_SelectionChanged" Margin="119,10,3,155"/>
                 <Label Content="За семестр:" Margin="0,35,0,17"/>
-                <ComboBox x:Name="semester" Height="20" SelectionChanged="semester_SelectionChanged" Margin="119,35,10,130"/>
-                <ComboBox x:Name="disc" Height="20" Margin="119,85,10,80"/>
+                <ComboBox x:Name="semester" Height="20" SelectionChanged="semester_SelectionChanged" Margin="119,35,3,130"/>
+                <ComboBox x:Name="disc" Margin="119,85,3,77"/>
                 <Label Content="По дисциплине:" Margin="0,85,92,65"/>
                 <Label Content="Tип:" Margin="0,59,130,100" />
-                <ComboBox x:Name="type" Height="20" SelectionChanged="type_SelectionChanged" Margin="119,60,9,105"/>
+                <ComboBox x:Name="type" Height="20" SelectionChanged="type_SelectionChanged" Margin="119,60,3,105"/>
                 <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" Width="75" Click="Button_Click_1" Margin="84,120,85,41"/>
             </Grid>
         </Expander>
         <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
             <MenuItem Header="Файл" Click="MenuItem_Click">
-                <MenuItem Header="Сохранить как..." Click="MenuItem_Click"></MenuItem>
+                <MenuItem Header="Сохранить таблицу в Exel" Click="MenuItem_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Добавить успеваемость" Click="MenuItem_Click_1"></MenuItem>
+            <MenuItem Header="Добавить успеваемость" Click="MenuItem_Click_1" Height="22"></MenuItem>
             <MenuItem Header="Показать все" Click="MenuItem_Click_2"></MenuItem>
         </Menu>
 

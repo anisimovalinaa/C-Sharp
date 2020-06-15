@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="AddDiscipline" Height="402" Width="454">
+        Title="Добавить дисциплину" Height="294.667" Width="402" FontFamily="Times New Roman" FontSize="15">
     <Grid>
-        <Label Content="Название:" HorizontalAlignment="Left" Margin="30,26,0,0" VerticalAlignment="Top"/>
-        <Label Content="Колличество часов:" HorizontalAlignment="Left" Margin="42,109,0,0" VerticalAlignment="Top"/>
-        <Label Content="Семестр:" HorizontalAlignment="Left" Margin="42,189,0,0" VerticalAlignment="Top"/>
-        <Label Content="Направление:" HorizontalAlignment="Left" Margin="42,244,0,0" VerticalAlignment="Top"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="191,321,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="speciality" HorizontalAlignment="Left" Margin="224,244,0,0" VerticalAlignment="Top" Width="120">
+        <Label Content="Название:" HorizontalAlignment="Left" Margin="42,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="Колличество часов:" HorizontalAlignment="Left" Margin="42,92,0,0" VerticalAlignment="Top"/>
+        <Label Content="Семестр:" HorizontalAlignment="Left" Margin="42,134,0,0" VerticalAlignment="Top"/>
+        <Label Content="Направление:" HorizontalAlignment="Left" Margin="42,171,0,0" VerticalAlignment="Top"/>
+        <Button Content="Добавить" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click" Height="25"/>
+        <ComboBox x:Name="speciality" HorizontalAlignment="Left" Margin="191,171,0,0" VerticalAlignment="Top" Width="136">
             <TextBlock>Прикладная математика и информатика</TextBlock>
             <TextBlock>Фундаментальная информатика и информационные технологии</TextBlock>
             <TextBlock>Математическое обеспечение и администрирование информационных систем</TextBlock>
             <TextBlock>Прикладная информатика</TextBlock>
         </ComboBox>
-        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="233,204,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="191,134,0,0" VerticalAlignment="Top" Width="136">
             <TextBlock>1</TextBlock>
             <TextBlock>2</TextBlock>
             <TextBlock>3</TextBlock>
@@ -28,8 +28,8 @@
             <TextBlock>7</TextBlock>
             <TextBlock>8</TextBlock>
         </ComboBox>
-        <TextBox x:Name="hours" HorizontalAlignment="Left" Height="23" Margin="216,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="203,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="hours" HorizontalAlignment="Left" Height="23" Margin="191,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="46" Margin="191,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
 
     </Grid>
 </Window>

@@ -21,35 +21,31 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Показать все" HorizontalAlignment="Left" Margin="685,99,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click"/>
-        <ComboBox x:Name="spec" HorizontalAlignment="Left" Margin="685,214,0,0" VerticalAlignment="Top" Width="120">
-            <TextBlock>Прикладная математика и информатика</TextBlock>
-            <TextBlock>Фундаментальная информатика и информационные технологии</TextBlock>
-            <TextBlock>Математическое обеспечение и администрирование информационных систем</TextBlock>
-            <TextBlock>Прикладная информатика</TextBlock>
-        </ComboBox>
-        <Button Content="Показать" HorizontalAlignment="Left" Margin="716,284,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1"/>
-        <Expander Header="Добавить группу" HorizontalAlignment="Left" Height="161" Margin="598,344,0,0" VerticalAlignment="Top" Width="250">
+        <Expander Header="Добавить группу" HorizontalAlignment="Left" Height="161" Margin="577,29,0,0" VerticalAlignment="Top" Width="323">
             <Grid>
-                <ComboBox x:Name="spec1" HorizontalAlignment="Left" Margin="118,62,0,56" Width="120" Height="20">
+                <ComboBox x:Name="spec1" BorderBrush="Red" HorizontalAlignment="Left" Margin="118,56,-72,55" Width="202">
                     <TextBlock>Прикладная математика и информатика</TextBlock>
                     <TextBlock>Фундаментальная информатика и информационные технологии</TextBlock>
                     <TextBlock>Математическое обеспечение и администрирование информационных систем</TextBlock>
                     <TextBlock>Прикладная информатика</TextBlock>
                 </ComboBox>
-                <TextBox x:Name="number" HorizontalAlignment="Left" Height="23" Margin="118,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Button Content="Добавить" HorizontalAlignment="Left" Margin="82,108,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_2"/>
+                <TextBox x:Name="number" BorderBrush="SteelBlue" HorizontalAlignment="Left" Height="23" Margin="118,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="number_TextChanged"/>
+                <Button Content="Добавить" HorizontalAlignment="Left" BorderBrush="Transparent" Background="PowderBlue" Margin="118,107,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_2"/>
                 <Label Content="Номер группы:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
                 <Label Content="Направление:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
             </Grid>
         </Expander>
         <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
-            <MenuItem Header="Файл" Click="MenuItem_Click">
-                <MenuItem Header="Сохранить как..." Click="MenuItem_Click"></MenuItem>
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить таблицу в Exel" Click="MenuItem_Click_1" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Добавить успеваемость" Click="MenuItem_Click_1"></MenuItem>
-            <MenuItem Header="Показать все" Click="MenuItem_Click_2"></MenuItem>
+            <MenuItem Header="Показать группы" Height="22">
+                <MenuItem x:Name="s1" Header="Прикладная математика и информатика" Click="s1_Click"></MenuItem>
+                <MenuItem x:Name="s2" Header="Фундаментальная информатика и информационные технологии" Click="s2_Click"></MenuItem>
+                <MenuItem x:Name="s3" Header="Математическое обеспечение и администрирование информационных систем" Click="s3_Click"></MenuItem>
+                <MenuItem x:Name="s4" Header="Прикладная информатика" Click="s4_Click"></MenuItem>
+                <MenuItem Header="Все" Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
         </Menu>
-
     </Grid>
 </Page>

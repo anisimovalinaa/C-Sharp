@@ -25,6 +25,8 @@ namespace TaskForExam
         {
             InitializeComponent();
             Show();
+            StudentInterface a = new ClassStudent();
+            group.ItemsSource = a.GetGroup();
         }
 
         private void Show()
@@ -54,9 +56,13 @@ namespace TaskForExam
             {
                 tablePersStudent.Items.Clear();
                 StudentInterface a = new ClassStudent();
-                a.ShowGroup(tablePersStudent, group);
-                group.Clear();
+                a.ShowPersGroup(tablePersStudent, group.Text);
             }
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Show();
         }
     }
 }

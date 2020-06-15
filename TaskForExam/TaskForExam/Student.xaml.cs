@@ -25,6 +25,8 @@ namespace TaskForExam
         {
             InitializeComponent();
             Show();
+            StudentInterface a = new ClassStudent();
+            group.ItemsSource = a.GetGroup();
         }
 
         private void Show()
@@ -42,23 +44,27 @@ namespace TaskForExam
             Docs.SaveDocs(wb(tableStudent));
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
-        {
-            AddStudent window = new AddStudent(tableStudent);
-            window.ShowDialog();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             tableStudent.Items.Clear();
             StudentInterface a = new ClassStudent();
-            a.ShowGroup(tableStudent, group);
-            group.Clear();
+            a.ShowGroup(tableStudent, group.Text);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddStudent window = new AddStudent(tableStudent);
+            window.ShowDialog();
         }
     }
 }

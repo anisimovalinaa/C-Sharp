@@ -27,6 +27,13 @@ namespace TaskForExam
             Show();
         }
 
+        private void ShowRank(string rank)
+        {
+            tableTeacher.Items.Clear();
+            TeacherInterface a = new ClassTeacher();
+            a.ShowRank(tableTeacher, rank);
+        }
+
         private void Show()
         {
             tableTeacher.Items.Clear();
@@ -41,22 +48,40 @@ namespace TaskForExam
             Docs.SaveDocs(wb(tableTeacher));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void t1_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRank("Профессор");
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             AddTeacher window = new AddTeacher(tableTeacher);
             window.ShowDialog();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            tableTeacher.Items.Clear();
-            TeacherInterface a = new ClassTeacher();
-            a.ShowRank(tableTeacher, rank);
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             Show();
+        }
+
+        private void t2_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRank("Доцент");
+        }
+
+        private void t3_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRank("Старший научный сотрудник");
+        }
+
+        private void t4_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRank("Младший научный сотрудник");
+        }
+
+        private void t5_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRank("Ассистент");
         }
     }
 }

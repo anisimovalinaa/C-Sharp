@@ -20,10 +20,14 @@ namespace TaskForExam
     }
     public class Docs
     {
+        /// <summary>
+        /// Создает из DataGrid файл Exel
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public static Excel.Workbook TableToExcel(DataGrid table)
         {
             Excel.Application excel = new Excel.Application();
-            //excel.Visible = false;
             Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
             Excel.Worksheet sheet1 = (Excel.Worksheet)excel.Worksheets.get_Item(1);
 
@@ -44,6 +48,10 @@ namespace TaskForExam
             }
             return workbook;
         }
+        /// <summary>
+        /// Сохраняет Exel файл
+        /// </summary>
+        /// <param name="workbook"></param>
         public static void SaveDocs(Excel.Workbook workbook)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -142,26 +150,68 @@ namespace TaskForExam
     {
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
             TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table);
-        void ShowGroup(DataGrid table, TextBox group);
+        void ShowGroup(DataGrid table, string group);
         void ShowGroups(DataGrid table);
+        void ShowPersGroup(DataGrid table, string group);
         void ShowGroupSpec(DataGrid table, string spec);
         void InsertGroup(string number, string spec);
+
+        /// <summary>
+        /// Получает список групп
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetGroup();
     }
     public interface TeacherInterface
     {
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox home, TextBox flat, TextBox phone, TextBox surname,
             TextBox name, TextBox middle_name, ComboBox rank, DataGrid table);
-        void ShowRank(DataGrid table, ComboBox rank);
-        void ShowPersRank(DataGrid table, ComboBox rank);
+        void ShowRank(DataGrid table, string rank);
+        void ShowPersRank(DataGrid table, string rank);
+        /// <summary>
+        /// Получает список преподавателей
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetTeacher();
     }
     public interface ListInterface
     {
+        /// <summary>
+        /// Выводит список ведомостей в DataGrid
+        /// </summary>
+        /// <param name="table"></param>
         void Show(DataGrid table);
-        void ShowGroup(DataGrid table, ComboBox type, ComboBox group);
-        void ShowTeacher(DataGrid table, ComboBox type, ComboBox teacher);
-        string[] GetGroup();
-        string[] GetTeacher();
+
+        /// <summary>
+        /// Выводит список ведомостей в DataGrid с указанием групы и типа ведомости
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="type"></param>
+        /// <param name="group"></param>
+        void ShowGroup(DataGrid table, string type, string group);
+
+        /// <summary>
+        /// Выводит список ведомостей в DataGrid с указанием преподавателя и типа ведомости
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="type"></param>
+        /// <param name="teacher"></param>
+        void ShowTeacher(DataGrid table, string type, string teacher);
+
+        /// <summary>
+        /// Получает список дисциплин из таблицы ведомостей с указанием группы, типа ведомости и семестра
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="type"></param>
+        /// <param name="semester"></param>
         List<string> GetDisciplineGroup(string group, string type, string semester);
+
+        /// <summary>
+        /// Получает список дисциплин по направлению с укзанием группы и семестра
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="group"></param>
+        /// <returns></returns>
         List<string> GetDisciplineSpec(string semester, string group);
         List<string> GetStudents(string group);
         void InsertList(string semester, string discipline, string group, string type, string teacher, DataGrid table);
@@ -175,6 +225,10 @@ namespace TaskForExam
 
     public class ClassList: Connection, ListInterface
     {
+        /// <summary>
+        /// Выводит список ведомостей в DataGrid
+        /// </summary>
+        /// <param name="table"></param>
         public void Show(DataGrid table)
         {
             string comStr = "SELECT b.name, b.semester, c.number, a.type, d.surname, d.name, d.middle_name " +
@@ -217,6 +271,13 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Получает список дисциплин по направлению с укзанием группы и семестра
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="group"></param>
+        /// <returns></returns>
         public List<string> GetDisciplineSpec(string semester, string group)
         {
             List<string> disc = new List<string>();
@@ -237,6 +298,13 @@ namespace TaskForExam
 
             return disc;
         }
+
+        /// <summary>
+        /// Получает список дисциплин из таблицы ведомостей с указанием группы, типа ведомости и семестра
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="type"></param>
+        /// <param name="semester"></param>
         public List<string> GetDisciplineGroup(string group, string type, string semester)
         {
             List<string> disc = new List<string>();
@@ -343,16 +411,23 @@ namespace TaskForExam
             }
             reader.Close();
         }
-        public void ShowTeacher(DataGrid table, ComboBox type, ComboBox teacher)
+
+        /// <summary>
+        /// Выводит список ведомостей в DataGrid с указанием преподавателя и типа ведомости
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="type"></param>
+        /// <param name="teacher"></param>
+        public void ShowTeacher(DataGrid table, string type, string teacher)
         {
-            string[] nameT = teacher.Text.Split(' ');
+            string[] nameT = teacher.Split(' ');
 
             string comStr = "SELECT b.name, c.number, a.type, d.surname, d.name, d.middle_name " +
                 "FROM `list` a " +
                 "LEFT OUTER JOIN `discipline` b ON b.id = a.discipline " +
                 "LEFT OUTER JOIN `group` c ON c.id = a.group " +
                 "LEFT OUTER JOIN `teacher` d ON d.id = a.teacher " +
-                "WHERE a.type = '" + type.Text + "' AND d.surname = '" + nameT[0] + "' AND d.name = '" + nameT[1] + "' AND d.middle_name = '" + nameT[2] + "'";
+                "WHERE a.type = '" + type + "' AND d.surname = '" + nameT[0] + "' AND d.name = '" + nameT[1] + "' AND d.middle_name = '" + nameT[2] + "'";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -368,14 +443,20 @@ namespace TaskForExam
             }
             reader.Close();
         }
-        public void ShowGroup(DataGrid table, ComboBox type, ComboBox group)
+        /// <summary>
+        /// Выводит список ведомостей в DataGrid с указанием групы и типа ведомости
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="type"></param>
+        /// <param name="group"></param>
+        public void ShowGroup(DataGrid table, string type, string group)
         {
             string comStr = "SELECT b.name, c.number, a.type, d.surname, d.name, d.middle_name " +
                 "FROM `list` a " +
                 "LEFT OUTER JOIN `discipline` b ON b.id = a.discipline " +
                 "LEFT OUTER JOIN `group` c ON c.id = a.group " +
                 "LEFT OUTER JOIN `teacher` d ON d.id = a.teacher " +
-                "WHERE (a.type = '" + type.Text + "' AND c.number = " + group.Text + ")";
+                "WHERE (a.type = '" + type + "' AND c.number = " + group + ")";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -431,60 +512,6 @@ namespace TaskForExam
             MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
             com2.ExecuteNonQuery();
         }
-        public string[] GetGroup()
-        {
-            string comStr1 = "SELECT count(*) FROM `group`";
-            MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
-            MySqlDataReader reader = com1.ExecuteReader();
-            string count = "";
-            while (reader.Read())
-            {
-                count = reader[0].ToString();
-            }
-            reader.Close();
-
-            string comstr2 = "SELECT * FROM `group`";
-            MySqlCommand com2 = new MySqlCommand(comstr2, myConnection);
-            MySqlDataReader reader1 = com2.ExecuteReader();
-
-            string[] groups = new string[int.Parse(count)];
-            int i = 0;
-            while (reader1.Read())
-            {
-                groups[i] = reader1[1].ToString();
-                i++;
-            }
-            reader1.Close();
-
-            return groups;
-        }
-        public string[] GetTeacher()
-        {
-            string comStr1 = "SELECT count(*) FROM `teacher`";
-            MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
-            MySqlDataReader reader = com1.ExecuteReader();
-            string count = "";
-            while (reader.Read())
-            {
-                count = reader[0].ToString();
-            }
-            reader.Close();
-
-            string comstr2 = "SELECT * FROM `teacher`";
-            MySqlCommand com2 = new MySqlCommand(comstr2, myConnection);
-            MySqlDataReader reader1 = com2.ExecuteReader();
-
-            string[] teachers = new string[int.Parse(count)];
-            int i = 0;
-            while (reader1.Read())
-            {
-                teachers[i] = reader1[1].ToString() + " " + reader1[2].ToString() + " " + reader1[3].ToString() + " ";
-                i++;
-            }
-            reader1.Close();
-
-            return teachers;
-        }
         public void InsertList(string semester, string discipline, string group, string type, string teacher, DataGrid table)
         {
             string comstr1 = "SELECT * FROM `discipline` WHERE name = '" + discipline + "' AND `semester` = '" + semester + "'";
@@ -538,8 +565,10 @@ namespace TaskForExam
     }
     public class ClassTeacher : Connection, Operations, TeacherInterface
     {
-        //private static
-        //Connection connection = new Connection();
+        public ClassTeacher()
+        {
+
+        }
         public void Show(DataGrid table)
         {
             string comStr = "SELECT * FROM teacher";
@@ -579,6 +608,25 @@ namespace TaskForExam
             }
             reader.Close();
         }
+        /// <summary>
+        /// Получает список преподавателей
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTeacher()
+        {
+            string comstr = "SELECT `surname`, `name`, `middle_name` FROM `teacher`";
+            MySqlCommand com = new MySqlCommand(comstr, myConnection);
+            MySqlDataReader reader = com.ExecuteReader();
+
+            List<string> teachers = new List<string>();
+            while (reader.Read())
+            {
+                teachers.Add(reader[0].ToString() + " " + reader[1].ToString() + " " + reader[2].ToString());
+            }
+            reader.Close();
+
+            return teachers;
+        }
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox home, TextBox flat, TextBox phone, TextBox surname,
             TextBox name, TextBox middle_name, ComboBox rank, DataGrid table)
         {
@@ -614,9 +662,9 @@ namespace TaskForExam
                 rank = rank.Text
             });
         }
-        public void ShowRank(DataGrid table, ComboBox rank)
+        public void ShowRank(DataGrid table, string rank)
         {
-            string comstr1 = "SELECT * FROM teacher WHERE academic_rank = '" + rank.Text + "'";
+            string comstr1 = "SELECT * FROM teacher WHERE academic_rank = '" + rank + "'";
             MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
             MySqlDataReader reader = com1.ExecuteReader();
 
@@ -632,12 +680,12 @@ namespace TaskForExam
             }
             reader.Close();
         }
-        public void ShowPersRank(DataGrid table, ComboBox rank)
+        public void ShowPersRank(DataGrid table, string rank)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
                 "FROM `teacher` a " +
                 "LEFT OUTER JOIN `pers_teacher` b ON b.id = a.id " +
-                "WHERE a.academic_rank = '" + rank.Text + "'";
+                "WHERE a.academic_rank = '" + rank + "'";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -659,6 +707,10 @@ namespace TaskForExam
                 });
             }
             reader.Close();
+        }
+        ~ClassTeacher()
+        {
+
         }
     }
     public class ClassStudent : Connection, Operations, StudentInterface
@@ -709,6 +761,27 @@ namespace TaskForExam
             }
             reader.Close();
         }
+
+        /// <summary>
+        /// Получает список групп
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetGroup()
+        {
+            string comstr = "SELECT `number` FROM `group`";
+            MySqlCommand com = new MySqlCommand(comstr, myConnection);
+            MySqlDataReader reader = com.ExecuteReader();
+
+            List<string> groups = new List<string>();
+            while (reader.Read())
+            {
+                groups.Add(reader[0].ToString());
+            }
+            reader.Close();
+
+            return groups;
+        }
+
         public void Show(DataGrid table)
         {
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
@@ -823,7 +896,12 @@ namespace TaskForExam
                 year = year.Text
             });
         }
-        public void ShowGroup(DataGrid table, TextBox group)
+        /// <summary>
+        /// Показывает список группы
+        /// </summary>
+        /// <param name="table">Таблица, куда помещается список</param>
+        /// <param name="group">Номер группы</param>
+        public void ShowGroup(DataGrid table, string group)
         {
             string comstr1 = "SELECT * FROM `group`";
             MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
@@ -832,35 +910,29 @@ namespace TaskForExam
             string idG = "";
             while (reader1.Read())
             {
-                if (reader1[1].ToString() == group.Text) idG = reader1[0].ToString();
+                if (reader1[1].ToString() == group) idG = reader1[0].ToString();
             }
             reader1.Close();
 
-            if (idG == "")
-            {
-                MessageBox.Show("Такой группы нет!", "ОШИБКА");
-            }
-            else
-            {
-                string comStr2 = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
-                    "FROM `student` a " +
-                    "LEFT OUTER JOIN `group` b ON b.id = a.group " +
-                    "WHERE a.group = " + idG;
-                MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
-                MySqlDataReader reader2 = com2.ExecuteReader();
+            string comStr2 = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
+                "FROM `student` a " +
+                "LEFT OUTER JOIN `group` b ON b.id = a.group " +
+                "WHERE a.group = " + idG;
+            MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
+            MySqlDataReader reader2 = com2.ExecuteReader();
 
-                while (reader2.Read())
+            while (reader2.Read())
+            {
+                table.Items.Add(new columnStudent()
                 {
-                    table.Items.Add(new columnStudent()
-                    {
-                        surname = reader2[0].ToString(),
-                        name = reader2[1].ToString(),
-                        middle_name = reader2[2].ToString(),
-                        group = reader2[3].ToString(),
-                        year = reader2[4].ToString()
-                    });
-                }
+                    surname = reader2[0].ToString(),
+                    name = reader2[1].ToString(),
+                    middle_name = reader2[2].ToString(),
+                    group = reader2[3].ToString(),
+                    year = reader2[4].ToString()
+                });
             }
+
         }
         public void ShowGroups(DataGrid table)
         {
@@ -880,7 +952,7 @@ namespace TaskForExam
             }
             reader.Close();
         }
-        public void ShowPersGroup(DataGrid table, TextBox group)
+        public void ShowPersGroup(DataGrid table, string group)
         {
             string comstr1 = "SELECT * FROM `group`";
             MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
@@ -889,42 +961,35 @@ namespace TaskForExam
             string idG = "";
             while (reader1.Read())
             {
-                if (reader1[1].ToString() == group.Text) idG = reader1[0].ToString();
+                if (reader1[1].ToString() == group) idG = reader1[0].ToString();
             }
             reader1.Close();
 
-            if (idG == "")
-            {
-                MessageBox.Show("Такой группы нет!", "ОШИБКА");
-            }
-            else
-            {
-                string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
-                "FROM `student` a " +
-                "LEFT OUTER JOIN `pers_student` b ON b.id = a.id " +
-                "WHERE a.group = " + idG;
-                MySqlCommand com = new MySqlCommand(comStr, myConnection);
-                MySqlDataReader reader = com.ExecuteReader();
+            string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
+            "FROM `student` a " +
+            "LEFT OUTER JOIN `pers_student` b ON b.id = a.id " +
+            "WHERE a.group = " + idG;
+            MySqlCommand com = new MySqlCommand(comStr, myConnection);
+            MySqlDataReader reader = com.ExecuteReader();
 
-                while (reader.Read())
+            while (reader.Read())
+            {
+                table.Items.Add(new columnPers()
                 {
-                    table.Items.Add(new columnPers()
-                    {
-                        surname = reader[0].ToString(),
-                        name = reader[1].ToString(),
-                        middle_name = reader[2].ToString(),
-                        series = reader[3].ToString(),
-                        number = reader[4].ToString(),
-                        sex = reader[5].ToString(),
-                        city = reader[6].ToString(),
-                        street = reader[7].ToString(),
-                        numberH = reader[8].ToString(),
-                        flat = reader[9].ToString(),
-                        phone_number = reader[10].ToString()
-                    });
-                }
-                reader.Close();
+                    surname = reader[0].ToString(),
+                    name = reader[1].ToString(),
+                    middle_name = reader[2].ToString(),
+                    series = reader[3].ToString(),
+                    number = reader[4].ToString(),
+                    sex = reader[5].ToString(),
+                    city = reader[6].ToString(),
+                    street = reader[7].ToString(),
+                    numberH = reader[8].ToString(),
+                    flat = reader[9].ToString(),
+                    phone_number = reader[10].ToString()
+                });
             }
+            reader.Close();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TaskForExam
         public AddRating()
         {
             InitializeComponent();
-            ListInterface a = new ClassList();
+            StudentInterface a = new ClassStudent();
             group.ItemsSource = a.GetGroup();
             string[] mas = { "...выберите тип" };
             mark.ItemsSource = mas;

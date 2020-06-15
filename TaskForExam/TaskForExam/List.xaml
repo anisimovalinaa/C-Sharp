@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="List">
+      Title="List" FontSize="15"  FontFamily="Times New Roman">
 
     <Grid>
-        <DataGrid x:Name="tableList" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="708" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="tableList" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="656" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=discipline}" ClipboardContentBinding="{x:Null}" Header="Дисциплина" CanUserResize="False" Width="200">
                     <DataGridTextColumn.ElementStyle>
@@ -20,28 +20,41 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path=group}" ClipboardContentBinding="{x:Null}" Header="Группа" CanUserResize="False" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=type}" ClipboardContentBinding="{x:Null}" Header="Тип" CanUserResize="False" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=teacher}" ClipboardContentBinding="{x:Null}" Header="Преподаватель" CanUserResize="False" Width="300"/>
+                <DataGridTextColumn Binding="{Binding Path=teacher}" ClipboardContentBinding="{x:Null}" Header="Преподаватель" CanUserResize="False" Width="250">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Показать все:" HorizontalAlignment="Left" Margin="732,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Группы:" HorizontalAlignment="Left" Margin="732,86,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="type" HorizontalAlignment="Left" Margin="821,59,0,0" VerticalAlignment="Top" Width="109">
+        <Label Content="Показать все:" HorizontalAlignment="Left" Margin="703,51,0,0" VerticalAlignment="Top"/>
+        <Label Content="Группы:" HorizontalAlignment="Left" Margin="703,78,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="type" HorizontalAlignment="Left" Margin="804,55,0,0" VerticalAlignment="Top" Width="109">
             <TextBlock>Экзамен</TextBlock>
             <TextBlock>Зачет</TextBlock>
             <TextBlock>Дифференцированный зачет</TextBlock>
         </ComboBox>
-        <Button Content="Показать" HorizontalAlignment="Left" Margin="791,129,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Показать все ведомости" HorizontalAlignment="Left" Margin="755,27,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click_1"/>
-        <Button Content="Добавить ведомость" HorizontalAlignment="Left" Margin="755,212,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click_2"/>
-        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="821,90,0,0" VerticalAlignment="Top" Width="109"/>
-        <Label Content="Показать все:" HorizontalAlignment="Left" Margin="727,259,0,0" VerticalAlignment="Top"/>
-        <Label Content="Преподавателя:" HorizontalAlignment="Left" Margin="724,290,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="type1" HorizontalAlignment="Left" Margin="821,263,0,0" VerticalAlignment="Top" Width="109">
+        <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="761,125,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" Height="27"/>
+        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="804,86,0,0" VerticalAlignment="Top" Width="109"/>
+        <Label Content="Показать все:" HorizontalAlignment="Left" Margin="690,259,0,0" VerticalAlignment="Top"/>
+        <Label Content="Преподавателя:" HorizontalAlignment="Left" Margin="690,290,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="type1" HorizontalAlignment="Left" Margin="804,263,0,0" VerticalAlignment="Top" Width="126">
             <TextBlock><Run Text="Экзамен"/></TextBlock>
             <TextBlock><Run Text="Зачет"/></TextBlock>
             <TextBlock><Run Text="Дифференцированный зачет"/></TextBlock>
         </ComboBox>
-        <ComboBox x:Name="teacher" HorizontalAlignment="Left" Margin="821,294,0,0" VerticalAlignment="Top" Width="109"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="791,340,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить таблицу в Exel" Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Показать все ведомости" Height="22" Click="MenuItem_Click_2"/>
+            <MenuItem Header="Добавить ведомость" Click="MenuItem_Click_1"></MenuItem>
+        </Menu>
+
+
+        <ComboBox x:Name="teacher" HorizontalAlignment="Left" Margin="804,294,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="761,341,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click_3" Height="27"/>
     </Grid>
 </Page>

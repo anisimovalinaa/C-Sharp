@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="PersStudent">
+      Title="PersStudent" FontSize="15" FontFamily="Times New Roman">
 
     <Grid>
         <DataGrid x:Name="tablePersStudent" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="722" FontSize="15"  FontFamily="Times New Roman">
@@ -24,16 +24,16 @@
                 <DataGridTextColumn Binding="{Binding Path=phone_number}" ClipboardContentBinding="{x:Null}" Header="Номер телефона" CanUserResize="False" Width="115"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="154">
-            <MenuItem Header="File" Click="MenuItem_Click">
-                <MenuItem Header="Save as..." Click="MenuItem_Click"></MenuItem>
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
+            <MenuItem Header="Файл" Height="22">
+                <MenuItem Header="Сохранить таблицу в Exel" Click="MenuItem_Click"></MenuItem>
             </MenuItem>
+            <MenuItem Header="Показать все" Height="22" Click="MenuItem_Click_2"/>
         </Menu>
-        <Label Content="Показать список группы:" HorizontalAlignment="Left" Margin="751,99,0,0" VerticalAlignment="Top"/>
-        <Label Content="Введите номер группы:" HorizontalAlignment="Left" Margin="772,145,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="group" HorizontalAlignment="Left" Height="24" Margin="791,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content ="Показать"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="791,272,0,0" Click="Button_Click"/>
-        <Button Content="Показать всех студентов" HorizontalAlignment="Left" Margin="751,45,0,0" VerticalAlignment="Top" Width="160" Height="29" Click="Button_Click_1"/>
+        <Label Content="Показать список группы:" HorizontalAlignment="Left" Margin="751,27,0,0" VerticalAlignment="Top"/>
+        <Label Content="Номер:" HorizontalAlignment="Left" Margin="768,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,-0.728"/>
+        <Button Content ="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="800,95,0,0" Click="Button_Click"/>
+        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="829,59,0,0" VerticalAlignment="Top" Width="83"/>
 
     </Grid>
 </Page>

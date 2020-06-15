@@ -25,8 +25,8 @@ namespace TaskForExam
         {
             InitializeComponent();
             Show();
-            ListInterface a = new ClassList();
-            group.ItemsSource = a.GetGroup();
+            StudentInterface g = new ClassStudent();
+            group.ItemsSource = g.GetGroup();
             string[] mas1 = { "1", "2", "3", "4", "5", "6", "7", "8" };
             semester.ItemsSource = mas1;
             string[] mas2 = { "Зачет", "Экзамен", "Дифференцированный зачет"};

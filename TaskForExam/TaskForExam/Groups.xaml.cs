@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TaskForExam
 {
@@ -32,20 +33,11 @@ namespace TaskForExam
             a.ShowGroups(table);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ShowSpec(string speciality)
         {
-            Show();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (spec.Text == "") MessageBox.Show("Выберите специальность.");
-            else
-            {
-                table.Items.Clear();
-                StudentInterface a = new ClassStudent();
-                a.ShowGroupSpec(table, spec.Text);
-            }
+            table.Items.Clear();
+            StudentInterface a = new ClassStudent();
+            a.ShowGroupSpec(table, speciality);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -58,6 +50,50 @@ namespace TaskForExam
                 a.InsertGroup(number.Text, spec1.Text);
                 table.Items.Clear();
                 Show();
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        { 
+            Show();
+        }
+
+        delegate Excel.Workbook workbook(DataGrid table);
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            workbook wb = new workbook(Docs.TableToExcel);
+            Docs.SaveDocs(wb(table));
+        }
+
+        private void s1_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSpec(s1.Header.ToString());
+        }
+
+        private void s2_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSpec(s2.Header.ToString());
+        }
+
+        private void s3_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSpec(s3.Header.ToString());
+        }
+
+        private void s4_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSpec(s4.Header.ToString());
+        }
+
+        private void number_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                textBox.Text = new string
+                    (
+                         textBox.Text.Where
+                         (ch => (ch >= '0' && ch <= '9') || ch == '+').ToArray()
+                    );
             }
         }
     }

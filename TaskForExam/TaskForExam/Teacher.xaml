@@ -17,21 +17,20 @@
                 <DataGridTextColumn Binding="{Binding Path = rank}" ClipboardContentBinding="{x:Null}" Header="Ученое звание" CanUserResize="False" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="154">
-            <MenuItem Header="File" Click="MenuItem_Click">
-                <MenuItem Header="Save as..." Click="MenuItem_Click"></MenuItem>
+        <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Сохранить таблицу в Exel" Click="MenuItem_Click"></MenuItem>
             </MenuItem>
+            <MenuItem Header="Показать преподавателей" Height="22">
+                <MenuItem Header="Всех" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem x:Name="t1" Header="Профессоры" Click="t1_Click"></MenuItem>
+                <MenuItem x:Name="t2" Header="Доценты" Click="t2_Click"></MenuItem>
+                <MenuItem x:Name="t3" Header="Старшие научные сотрудники" Click="t3_Click"></MenuItem>
+                <MenuItem x:Name="t4" Header="Младшие научные сотрудники" Click="t4_Click"></MenuItem>
+                <MenuItem x:Name="t5" Header="Ассистенты" Click="t5_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Добавить преподавателя" Height="22" Click="MenuItem_Click_2"/>
+
         </Menu>
-        <Button Content="Добавить преподавателя" HorizontalAlignment="Left" Margin="680,120,0,0" VerticalAlignment="Top" Width="190" Height="72" Click="Button_Click"/>
-        <Label Content="Показать преподавателей с ученым званием:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="611,217,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="rank" HorizontalAlignment="Left" Margin="666,241,0,0" VerticalAlignment="Top" Width="120">
-            <TextBlock>Профессор</TextBlock>
-            <TextBlock>Доцент</TextBlock>
-            <TextBlock>Старший научный сотрудник</TextBlock>
-            <TextBlock>Ассистент</TextBlock>
-            <TextBlock>Младший научный сотрудник</TextBlock>
-        </ComboBox>
-        <Button Content="Показать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="691,284,0,0" Click="Button_Click_1"/>
-        <Button Content="Показать всех преподавателей" HorizontalAlignment="Left" Margin="680,54,0,0" VerticalAlignment="Top" Width="206" Height="31" Click="Button_Click_2"/>
     </Grid>
 </Page>
