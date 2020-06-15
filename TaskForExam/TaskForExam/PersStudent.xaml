@@ -31,9 +31,10 @@
             <MenuItem Header="Показать все" Height="22" Click="MenuItem_Click_2"/>
         </Menu>
         <Label Content="Показать список группы:" HorizontalAlignment="Left" Margin="751,27,0,0" VerticalAlignment="Top"/>
-        <Label Content="Номер:" HorizontalAlignment="Left" Margin="768,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,-0.728"/>
+        <Label Content="Номер:" HorizontalAlignment="Left" Margin="756,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,-0.728"/>
         <Button Content ="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="800,95,0,0" Click="Button_Click"/>
-        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="829,59,0,0" VerticalAlignment="Top" Width="83"/>
-
+        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="817,59,0,0" VerticalAlignment="Top" Width="83" SelectionChanged="group_SelectionChanged"/>
+        <Label x:Name="a1" Content="!" Visibility="Hidden" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="p" Visibility="Hidden"  Content="*заполните все поля" Foreground="Brown" HorizontalAlignment="Left" Margin="770,108,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

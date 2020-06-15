@@ -39,12 +39,25 @@ namespace TaskForExam
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (type.Text == "" || group.Text == "") MessageBox.Show("Заполните все поля!");
+            if (type.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+                if (group.Text == "") a2.Visibility = Visibility.Visible;
+            }
             else
             {
-                tableList.Items.Clear();
-                ListInterface a = new ClassList();
-                a.ShowGroup(tableList, type.Text, group.Text);
+                if (group.Text == "")
+                {
+                    a2.Visibility = Visibility.Visible;
+                    p.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tableList.Items.Clear();
+                    ListInterface a = new ClassList();
+                    a.ShowGroup(tableList, type.Text, group.Text);
+                }
             }
         }
 
@@ -75,6 +88,18 @@ namespace TaskForExam
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             Show();
+        }
+
+        private void type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a1.Visibility = Visibility.Hidden;
+            if (group.Text != "") p.Visibility = Visibility.Hidden;
+        }
+
+        private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a2.Visibility = Visibility.Hidden;
+            if (type.Text != "") p.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -46,12 +46,17 @@ namespace TaskForExam
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (group.Text == "") MessageBox.Show("Заполните все поля!");
+            if (group.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+            }
             else
             {
                 tableStudent.Items.Clear();
                 StudentInterface a = new ClassStudent();
                 a.ShowGroup(tableStudent, group.Text);
+                group.SelectedIndex = -1;
             }
         }
 
@@ -69,6 +74,12 @@ namespace TaskForExam
         {
             AddStudent window = new AddStudent(tableStudent);
             window.ShowDialog();
+        }
+
+        private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a1.Visibility = Visibility.Hidden;
+            p.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -28,7 +28,8 @@
         <Label Content="Показать список группы:" HorizontalAlignment="Left" Margin="628,27,0,0" VerticalAlignment="Top"/>
         <Label Content="Номер:" HorizontalAlignment="Left" Margin="608,59,0,0" VerticalAlignment="Top"/>
         <Button Content ="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" Margin="685,104,0,0" Click="Button_Click" Height="26"/>
-        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="685,59,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="685,63,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="group_SelectionChanged"/>
+        <Label x:Name="a1" Content="!" Visibility="Hidden" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="805,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="p" Visibility="Hidden" Content="*заполните все поля" Foreground="Brown" HorizontalAlignment="Left" Margin="764,104,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

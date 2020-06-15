@@ -51,18 +51,28 @@ namespace TaskForExam
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (group.Text == "")
-                MessageBox.Show("Выберите номер группы!", "ОШИБКА");
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+            }
             else
             {
                 tablePersStudent.Items.Clear();
                 StudentInterface a = new ClassStudent();
                 a.ShowPersGroup(tablePersStudent, group.Text);
+                group.SelectedIndex = -1;
             }
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             Show();
+        }
+
+        private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a1.Visibility = Visibility.Hidden;
+            p.Visibility = Visibility.Hidden;
         }
     }
 }

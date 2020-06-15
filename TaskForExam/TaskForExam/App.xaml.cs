@@ -1280,7 +1280,7 @@ namespace TaskForExam
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
             "FROM `student` a " +
             "LEFT OUTER JOIN `pers_student` b ON b.id = a.id " +
-            "WHERE a.group = " + idG + 
+            "WHERE a.group = '" + idG + "' " +
             "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
