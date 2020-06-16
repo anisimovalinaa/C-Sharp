@@ -244,7 +244,7 @@ namespace TaskForExam
         /// <param name="rank"></param>
         /// <param name="table"></param>
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox home, TextBox flat, TextBox phone, TextBox surname,
-            TextBox name, TextBox middle_name, ComboBox rank, DataGrid table);
+            TextBox name, TextBox middle_name, ComboBox rank);
 
         /// <summary>
         /// Выводит список преподавателей с указанием ученого звания
@@ -845,7 +845,7 @@ namespace TaskForExam
         /// <param name="rank"></param>
         /// <param name="table"></param>
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox home, TextBox flat, TextBox phone, TextBox surname,
-            TextBox name, TextBox middle_name, ComboBox rank, DataGrid table)
+            TextBox name, TextBox middle_name, ComboBox rank)
         {
             string comStr1 =
                 "INSERT INTO `department`.`pers_teacher` (`series` ,`number` ,`sex` ,`city` ,`street` ,`home`, `flat`, `phone_number`)" +
@@ -870,14 +870,6 @@ namespace TaskForExam
                 "VALUES('" + id + "', '" + surname.Text + "', '" + name.Text + "', '" + middle_name.Text + "', '" + rank.Text + "')";
             MySqlCommand com3 = new MySqlCommand(comStr3, myConnection);
             com3.ExecuteNonQuery();
-
-            table.Items.Add(new columnTeacher()
-            {
-                surname = surname.Text,
-                name = name.Text,
-                middle_name = middle_name.Text,
-                rank = rank.Text
-            });
         }
 
         /// <summary>

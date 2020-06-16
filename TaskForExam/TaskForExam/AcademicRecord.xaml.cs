@@ -49,6 +49,9 @@ namespace TaskForExam
                 ListInterface a = new ClassList();
                 disc.ItemsSource = a.GetDisciplineGroup(group.SelectedItem.ToString(), type.Text, semester.Text);
             }
+            a1.Visibility = Visibility.Hidden;
+            if (semester.Text != "" && type.Text != "" && (disc.Text != "" || disc.Text != "..выберете тип, семестр и группу")) 
+                p.Visibility = Visibility.Hidden;
         }
 
         private void semester_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,6 +62,9 @@ namespace TaskForExam
                 ListInterface a = new ClassList();
                 disc.ItemsSource = a.GetDisciplineGroup(group.Text, type.Text, semester.SelectedItem.ToString());
             }
+            a2.Visibility = Visibility.Hidden;
+            if (group.Text != "" && type.Text != "" && (disc.Text != "" || disc.Text != "..выберете тип, семестр и группу")) 
+                p.Visibility = Visibility.Hidden;
         }
 
         private void type_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,6 +75,9 @@ namespace TaskForExam
                 ListInterface a = new ClassList();
                 disc.ItemsSource = a.GetDisciplineGroup(group.Text, type.SelectedItem.ToString(), semester.Text);
             }
+            a3.Visibility = Visibility.Hidden;
+            if (semester.Text != "" && group.Text != "" && (disc.Text != "" || disc.Text != "..выберете тип, семестр и группу")) 
+                p.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -83,33 +92,33 @@ namespace TaskForExam
             }
             else
             {
-                if(semester.Text == "")
+                if (semester.Text == "")
                 {
                     p.Visibility = Visibility.Visible;
                     a2.Visibility = Visibility.Visible;
                     if (type.Text == "") a3.Visibility = Visibility.Visible;
                     if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу") a4.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    if (type.Text == "")
+                    {
+                        p.Visibility = Visibility.Visible;
+                        a3.Visibility = Visibility.Visible;
+                        if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу") a4.Visibility = Visibility.Visible;
+                    }
                     else
                     {
-                        if(type.Text == "")
+                        if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу")
                         {
                             p.Visibility = Visibility.Visible;
-                            a3.Visibility = Visibility.Visible;
-                            if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу") a4.Visibility = Visibility.Visible;
+                            a4.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу")
-                            {
-                                p.Visibility = Visibility.Visible;
-                                a4.Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
-                                table.Items.Clear();
-                                ListInterface a = new ClassList();
-                                a.ShowMarkGroup(table, group.Text, semester.Text, type.Text, disc.Text);
-                            }
+                            table.Items.Clear();
+                            ListInterface a = new ClassList();
+                            a.ShowMarkGroup(table, group.Text, semester.Text, type.Text, disc.Text);
                         }
                     }
                 }
@@ -134,6 +143,12 @@ namespace TaskForExam
         {
             table.Items.Clear();
             Show();
+        }
+
+        private void disc_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a4.Visibility = Visibility.Hidden;
+            if (semester.Text != "" && type.Text != "" && group.Text != "") p.Visibility = Visibility.Hidden;
         }
     }
 }

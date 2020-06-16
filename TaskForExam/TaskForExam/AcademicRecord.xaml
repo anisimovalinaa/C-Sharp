@@ -34,7 +34,7 @@
                 <ComboBox x:Name="group" Height="20" SelectionChanged="group_SelectionChanged" Margin="109,10,13,155"/>
                 <Label Content="За семестр:" Margin="-5,32,162,126"/>
                 <ComboBox x:Name="semester" Height="20" SelectionChanged="semester_SelectionChanged" Margin="109,35,13,130"/>
-                <ComboBox x:Name="disc" Margin="109,85,13,77"/>
+                <ComboBox x:Name="disc" Margin="109,85,13,77" SelectionChanged="disc_SelectionChanged"/>
                 <Label Content="По дисциплине:" Margin="-5,81,144,74"/>
                 <Label Content="Tип:" Margin="-5,55,135,104" />
                 <ComboBox x:Name="type" Height="20" SelectionChanged="type_SelectionChanged" Margin="109,60,13,105"/>

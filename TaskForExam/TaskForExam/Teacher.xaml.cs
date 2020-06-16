@@ -55,8 +55,9 @@ namespace TaskForExam
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            AddTeacher window = new AddTeacher(tableTeacher);
+            AddTeacher window = new AddTeacher();
             window.ShowDialog();
+            Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

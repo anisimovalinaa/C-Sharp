@@ -19,12 +19,10 @@ namespace TaskForExam
     /// </summary>
     public partial class AddTeacher : Window
     {
-        public AddTeacher(DataGrid table)
+        public AddTeacher()
         {
             InitializeComponent();
-            this.table = table;
         }
-        DataGrid table;
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (sender is TextBox textBox)
@@ -193,7 +191,7 @@ namespace TaskForExam
                 if (male.IsChecked == true) sex = male.Content.ToString();
                 else sex = female.Content.ToString();
                 TeacherInterface a = new ClassTeacher();
-                a.Insert(series, number, sex, city, street, home, flat, phone, surname, name, middle_name, rank, table);
+                a.Insert(series, number, sex, city, street, home, flat, phone, surname, name, middle_name, rank);
                 Cleaning();
             }
         }
