@@ -42,14 +42,26 @@ namespace TaskForExam
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (number.Text == "" || spec1.Text == "")
-                MessageBox.Show("Заполните все поля!");
+            if (number.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+                if (spec1.Text == "") a2.Visibility = Visibility.Visible;
+            }
             else
             {
-                StudentInterface a = new ClassStudent();
-                a.InsertGroup(number.Text, spec1.Text);
-                table.Items.Clear();
-                Show();
+                if (spec1.Text == "")
+                {
+                    a2.Visibility = Visibility.Visible;
+                    p.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    StudentInterface a = new ClassStudent();
+                    a.InsertGroup(number.Text, spec1.Text);
+                    table.Items.Clear();
+                    Show();
+                }
             }
         }
 
@@ -95,6 +107,14 @@ namespace TaskForExam
                          (ch => (ch >= '0' && ch <= '9') || ch == '+').ToArray()
                     );
             }
+            a1.Visibility = Visibility.Hidden;
+            if (spec1.Text != "") p.Visibility = Visibility.Hidden;
+        }
+
+        private void spec1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a2.Visibility = Visibility.Hidden;
+            if (number.Text != "") p.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -35,13 +35,25 @@ namespace TaskForExam
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (specComboBox.Text == "" || semester.Text == "")
-                MessageBox.Show("Заполните все поля!");
+            if (specComboBox.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+                if (semester.Text == "") a2.Visibility = Visibility.Visible;
+            }
             else
             {
-                ListInterface a = new ClassList();
-                tableDiscipline.Items.Clear();
-                a.ShowSemester(tableDiscipline, specComboBox.Text, semester.Text);
+                if (semester.Text == "")
+                {
+                    a2.Visibility = Visibility.Visible;
+                    p.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ListInterface a = new ClassList();
+                    tableDiscipline.Items.Clear();
+                    a.ShowSemester(tableDiscipline, specComboBox.Text, semester.Text);
+                }
             }
         }
 
@@ -69,6 +81,18 @@ namespace TaskForExam
         {
             workbook wb = new workbook(Docs.TableToExcel);
             Docs.SaveDocs(wb(tableDiscipline));
+        }
+
+        private void specComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a1.Visibility = Visibility.Hidden;
+            if (semester.Text != "") p.Visibility = Visibility.Hidden;
+        }
+
+        private void semester_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a2.Visibility = Visibility.Hidden;
+            if (specComboBox.Text != "") p.Visibility = Visibility.Hidden;
         }
     }
 }

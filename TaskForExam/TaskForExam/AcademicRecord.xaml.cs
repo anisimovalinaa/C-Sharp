@@ -73,13 +73,46 @@ namespace TaskForExam
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (group.Text == "" || semester.Text == "" || type.Text == "" || disc.Text == "" || disc.Text == "..выберете тип, семестр и группу")
-                MessageBox.Show("Заполните все поля!");
+            if (group.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+                if (semester.Text == "") a2.Visibility = Visibility.Visible;
+                if (type.Text == "") a3.Visibility = Visibility.Visible;
+                if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу") a4.Visibility = Visibility.Visible;
+            }
             else
             {
-                table.Items.Clear();
-                ListInterface a = new ClassList();
-                a.ShowMarkGroup(table, group.Text, semester.Text, type.Text, disc.Text);
+                if(semester.Text == "")
+                {
+                    p.Visibility = Visibility.Visible;
+                    a2.Visibility = Visibility.Visible;
+                    if (type.Text == "") a3.Visibility = Visibility.Visible;
+                    if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу") a4.Visibility = Visibility.Visible;
+                    else
+                    {
+                        if(type.Text == "")
+                        {
+                            p.Visibility = Visibility.Visible;
+                            a3.Visibility = Visibility.Visible;
+                            if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу") a4.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            if (disc.Text == "" || disc.Text == "..выберете тип, семестр и группу")
+                            {
+                                p.Visibility = Visibility.Visible;
+                                a4.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                table.Items.Clear();
+                                ListInterface a = new ClassList();
+                                a.ShowMarkGroup(table, group.Text, semester.Text, type.Text, disc.Text);
+                            }
+                        }
+                    }
+                }
             }
         }
 

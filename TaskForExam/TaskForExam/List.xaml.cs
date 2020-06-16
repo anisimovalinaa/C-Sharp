@@ -63,12 +63,25 @@ namespace TaskForExam
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if (type1.Text == "" || teacher.Text == "") MessageBox.Show("Заполните все поля!");
+            if (type1.Text == "")
+            {
+                a3.Visibility = Visibility.Visible;
+                p2.Visibility = Visibility.Visible;
+                if (teacher.Text == "") a4.Visibility = Visibility.Visible;
+            }
             else
             {
-                tableList.Items.Clear();
-                ListInterface a = new ClassList();
-                a.ShowTeacher(tableList, type1.Text, teacher.Text);
+                if (teacher.Text == "")
+                {
+                    a4.Visibility = Visibility.Visible;
+                    p2.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tableList.Items.Clear();
+                    ListInterface a = new ClassList();
+                    a.ShowTeacher(tableList, type1.Text, teacher.Text);
+                }
             }
         }
 
@@ -100,6 +113,18 @@ namespace TaskForExam
         {
             a2.Visibility = Visibility.Hidden;
             if (type.Text != "") p.Visibility = Visibility.Hidden;
+        }
+
+        private void type1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a3.Visibility = Visibility.Hidden;
+            if (teacher.Text != "") p2.Visibility = Visibility.Hidden;
+        }
+
+        private void teacher_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a4.Visibility = Visibility.Hidden;
+            if (type1.Text != "") p2.Visibility = Visibility.Hidden;
         }
     }
 }

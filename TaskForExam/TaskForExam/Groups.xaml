@@ -21,18 +21,21 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Expander Header="Добавить группу" HorizontalAlignment="Left" Height="161" Margin="577,29,0,0" VerticalAlignment="Top" Width="323">
+        <Expander Header="Добавить группу" HorizontalAlignment="Left" Height="161" Margin="553,29,0,0" VerticalAlignment="Top" Width="347">
             <Grid>
-                <ComboBox x:Name="spec1" BorderBrush="Red" HorizontalAlignment="Left" Margin="118,56,-72,55" Width="202">
+                <ComboBox x:Name="spec1" BorderBrush="Red" HorizontalAlignment="Left" Margin="118,56,-72,55" Width="202" SelectionChanged="spec1_SelectionChanged">
                     <TextBlock>Прикладная математика и информатика</TextBlock>
                     <TextBlock>Фундаментальная информатика и информационные технологии</TextBlock>
                     <TextBlock>Математическое обеспечение и администрирование информационных систем</TextBlock>
                     <TextBlock>Прикладная информатика</TextBlock>
                 </ComboBox>
                 <TextBox x:Name="number" BorderBrush="SteelBlue" HorizontalAlignment="Left" Height="23" Margin="118,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="number_TextChanged"/>
-                <Button Content="Добавить" HorizontalAlignment="Left" BorderBrush="Transparent" Background="PowderBlue" Margin="118,107,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_2"/>
+                <Button Content="Добавить" HorizontalAlignment="Left" BorderBrush="Transparent" Background="PowderBlue" Margin="118,107,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_2" Height="24"/>
                 <Label Content="Номер группы:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
                 <Label Content="Направление:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="a1" Visibility="Hidden" Foreground="Brown" FontSize="25" Content="!" Margin="317,12,8,84"/>
+                <Label x:Name="a2" Visibility="Hidden" Foreground="Brown" FontSize="25" Content="!" Margin="317,48,8,48"/>
+                <Label x:Name="p" Visibility="Hidden" Foreground="Brown" FontSize="10" Content="*заполните все поля" Margin="194,110,10,7"/>
             </Grid>
         </Expander>
         <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">

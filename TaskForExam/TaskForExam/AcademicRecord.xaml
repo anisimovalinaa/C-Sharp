@@ -28,17 +28,22 @@
                 <DataGridTextColumn Binding="{Binding Path=mark}" ClipboardContentBinding="{x:Null}" Header="Оценка" CanUserResize="False" Width="60"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Expander Header="Показать успеваемость" HorizontalAlignment="Left" FontSize="15" Height="208" Margin="677,29,0,0" VerticalAlignment="Top" Width="263">
+        <Expander Header="Показать успеваемость" HorizontalAlignment="Left" FontSize="15" Height="208" Margin="672,29,0,0" VerticalAlignment="Top" Width="263">
             <Grid Margin="0,0,8,0">
-                <Label Content="Группы:" Margin="0,10,0,-10"/>
-                <ComboBox x:Name="group" Height="20" SelectionChanged="group_SelectionChanged" Margin="119,10,3,155"/>
-                <Label Content="За семестр:" Margin="0,35,0,17"/>
-                <ComboBox x:Name="semester" Height="20" SelectionChanged="semester_SelectionChanged" Margin="119,35,3,130"/>
-                <ComboBox x:Name="disc" Margin="119,85,3,77"/>
-                <Label Content="По дисциплине:" Margin="0,85,92,65"/>
-                <Label Content="Tип:" Margin="0,59,130,100" />
-                <ComboBox x:Name="type" Height="20" SelectionChanged="type_SelectionChanged" Margin="119,60,3,105"/>
+                <Label Content="Группы:" Margin="-5,6,178,150"/>
+                <ComboBox x:Name="group" Height="20" SelectionChanged="group_SelectionChanged" Margin="109,10,13,155"/>
+                <Label Content="За семестр:" Margin="-5,32,162,126"/>
+                <ComboBox x:Name="semester" Height="20" SelectionChanged="semester_SelectionChanged" Margin="109,35,13,130"/>
+                <ComboBox x:Name="disc" Margin="109,85,13,77"/>
+                <Label Content="По дисциплине:" Margin="-5,81,144,74"/>
+                <Label Content="Tип:" Margin="-5,55,135,104" />
+                <ComboBox x:Name="type" Height="20" SelectionChanged="type_SelectionChanged" Margin="109,60,13,105"/>
                 <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" Width="75" Click="Button_Click_1" Margin="84,120,85,41"/>
+                <Label x:Name="a1" Content="!" Visibility="Hidden" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="235,0,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="a2" Content="!" Visibility="Hidden" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="235,25,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="a3" Content="!" Visibility="Hidden" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="235,50,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="a4" Content="!" Visibility="Hidden" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="235,77,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="p" Content="*заполните все поля" Visibility="Hidden" FontSize="10" Foreground="Brown" HorizontalAlignment="Left" Margin="158,122,-8,0" VerticalAlignment="Top" Width="103"/>
             </Grid>
         </Expander>
         <Menu HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" FontFamily="Times New Roman" Width="774">
