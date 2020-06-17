@@ -12,13 +12,13 @@
         <Label Content="Семестр:" HorizontalAlignment="Left" Margin="42,134,0,0" VerticalAlignment="Top"/>
         <Label Content="Направление:" HorizontalAlignment="Left" Margin="42,171,0,0" VerticalAlignment="Top"/>
         <Button Content="Добавить" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click" Height="25"/>
-        <ComboBox x:Name="speciality" HorizontalAlignment="Left" Margin="191,171,0,0" VerticalAlignment="Top" Width="136">
+        <ComboBox x:Name="speciality" HorizontalAlignment="Left" Margin="191,171,0,0" VerticalAlignment="Top" Width="136" SelectionChanged="speciality_SelectionChanged">
             <TextBlock>Прикладная математика и информатика</TextBlock>
             <TextBlock>Фундаментальная информатика и информационные технологии</TextBlock>
             <TextBlock>Математическое обеспечение и администрирование информационных систем</TextBlock>
             <TextBlock>Прикладная информатика</TextBlock>
         </ComboBox>
-        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="191,134,0,0" VerticalAlignment="Top" Width="136">
+        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="191,134,0,0" VerticalAlignment="Top" Width="136" SelectionChanged="semester_SelectionChanged">
             <TextBlock>1</TextBlock>
             <TextBlock>2</TextBlock>
             <TextBlock>3</TextBlock>
@@ -28,8 +28,12 @@
             <TextBlock>7</TextBlock>
             <TextBlock>8</TextBlock>
         </ComboBox>
-        <TextBox x:Name="hours" HorizontalAlignment="Left" Height="23" Margin="191,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="46" Margin="191,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
-
+        <TextBox x:Name="hours" HorizontalAlignment="Left" Height="23" Margin="191,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" TextChanged="hours_TextChanged"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="46" Margin="191,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" TextChanged="name_TextChanged"/>
+        <Label x:Name="a2" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="322,83,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a3" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="322,125,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a4" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="322,162,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="p" Visibility="Hidden" Content="*заполните все поля" Foreground="Brown" FontSize="15" HorizontalAlignment="Left" Margin="233,221,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a1" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="322,48,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

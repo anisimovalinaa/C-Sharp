@@ -20,10 +20,10 @@ namespace TaskForExam
     /// </summary>
     public partial class AddList : Window
     {
-        public AddList(DataGrid table)
+        string[] mas3 = { "..выберете семестр и группу" };
+        public AddList()
         {
             InitializeComponent();
-            this.table = table;
             StudentInterface g = new ClassStudent();
             group.ItemsSource = g.GetGroup();
             TeacherInterface t = new ClassTeacher();
@@ -32,29 +32,84 @@ namespace TaskForExam
             semester.ItemsSource = mas1;
             string[] mas2 = { "Зачет", "Экзамен", "Дифференцированный зачет" };
             type.ItemsSource = mas2;
-            string[] mas3 = { "..выберете семестр и группу" };
             disc.ItemsSource = mas3;
         }
-        DataGrid table;
+        private void Cleanning()
+        {
+            semester.SelectedIndex = -1;
+            type.SelectedIndex = -1;
+            group.SelectedIndex = -1;
+            disc.ItemsSource = mas3;
+            teacher.SelectedIndex = -1;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (semester.Text == "" || disc.Text == "" || group.Text == "" || type.Text == "" || teacher.Text == "")
-                MessageBox.Show("Заполните все поля!");
+            if (semester.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+                if (type.Text == "") a2.Visibility = Visibility.Visible;
+                if (group.Text == "") a3.Visibility = Visibility.Visible;
+                if (disc.Text == "") a4.Visibility = Visibility.Visible;
+                if (teacher.Text == "") a5.Visibility = Visibility.Visible;
+            }
             else
             {
-                ListInterface a = new ClassList();
-                a.InsertList(semester.Text, disc.Text, group.Text, type.Text, teacher.Text, table);
+                if (type.Text == "")
+                {
+                    a2.Visibility = Visibility.Visible;
+                    p.Visibility = Visibility.Visible;
+                    if (group.Text == "") a3.Visibility = Visibility.Visible;
+                    if (disc.Text == "") a4.Visibility = Visibility.Visible;
+                    if (teacher.Text == "") a5.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    if (group.Text == "")
+                    {
+                        a3.Visibility = Visibility.Visible;
+                        p.Visibility = Visibility.Visible;
+                        if (disc.Text == "") a4.Visibility = Visibility.Visible;
+                        if (teacher.Text == "") a5.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        if (disc.Text == "")
+                        {
+                            a4.Visibility = Visibility.Visible;
+                            p.Visibility = Visibility.Visible;
+                            if (teacher.Text == "") a5.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            if (teacher.Text == "")
+                            {
+                                a5.Visibility = Visibility.Visible;
+                                p.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                ListInterface a = new ClassList();
+                                a.InsertList(semester.Text, disc.Text, group.Text, type.Text, teacher.Text);
+                                Cleanning();
+                            }
+                        }
+                    }
+                }
             }
         }
 
         private void semester_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (group.Text != "")
+            if (group.Text != "" && semester.SelectedIndex != -1)
             {
                 disc.SelectedItem = null;
                 ListInterface a = new ClassList();
                 disc.ItemsSource = a.GetDisciplineSpec(semester.SelectedItem.ToString(), group.Text);
             }
+            a1.Visibility = Visibility.Hidden;
+            if (group.Text != "" && type.Text != "" && disc.Text != "" && teacher.Text != "")
+                p.Visibility = Visibility.Hidden;
         }
 
         private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -65,6 +120,31 @@ namespace TaskForExam
                 ListInterface a = new ClassList();
                 disc.ItemsSource = a.GetDisciplineSpec(semester.Text, group.SelectedItem.ToString());
             }
+            a3.Visibility = Visibility.Hidden;
+            if (semester.Text != "" && type.Text != "" && disc.Text != "" && teacher.Text != "")
+                p.Visibility = Visibility.Hidden;
+        }
+
+        private void type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a2.Visibility = Visibility.Hidden;
+            if (group.Text != "" && semester.Text != "" && disc.Text != "" && teacher.Text != "")
+                p.Visibility = Visibility.Hidden;
+        }
+
+        private void disc_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (disc.ItemsSource == mas3) disc.SelectedIndex = -1;
+            a4.Visibility = Visibility.Hidden;
+            if (group.Text != "" && type.Text != "" && semester.Text != "" && teacher.Text != "")
+                p.Visibility = Visibility.Hidden;
+        }
+
+        private void teacher_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a5.Visibility = Visibility.Hidden;
+            if (group.Text != "" && type.Text != "" && disc.Text != "" && semester.Text != "")
+                p.Visibility = Visibility.Hidden;
         }
     }
 }

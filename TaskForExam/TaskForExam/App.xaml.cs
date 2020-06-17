@@ -176,7 +176,7 @@ namespace TaskForExam
         /// <param name="year"></param>
         /// <param name="table"></param>
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
-            TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table);
+            TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year);
 
         /// <summary>
         /// Выводит список студентов указанной группы
@@ -315,7 +315,7 @@ namespace TaskForExam
         /// <param name="type"></param>
         /// <param name="teacher"></param>
         /// <param name="table"></param>
-        void InsertList(string semester, string discipline, string group, string type, string teacher, DataGrid table);
+        void InsertList(string semester, string discipline, string group, string type, string teacher);
 
         /// <summary>
         /// Выводит список дисциплин
@@ -696,7 +696,7 @@ namespace TaskForExam
         /// <param name="type"></param>
         /// <param name="teacher"></param>
         /// <param name="table"></param>
-        public void InsertList(string semester, string discipline, string group, string type, string teacher, DataGrid table)
+        public void InsertList(string semester, string discipline, string group, string type, string teacher)
         {
             string comstr1 = "SELECT * FROM `discipline` WHERE name = '" + discipline + "' AND `semester` = '" + semester + "'";
             MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
@@ -737,14 +737,6 @@ namespace TaskForExam
                 "VALUES('" + idD + "', '" + idG + "', '" + type + "', '" + idT + "')";
             MySqlCommand com4 = new MySqlCommand(comStr4, myConnection);
             com4.ExecuteNonQuery();
-
-            table.Items.Add(new columnList()
-            {
-                discipline = discipline + ". Семестр " + semester,
-                group = group,
-                type = type,
-                teacher = teacher
-            });
         }
         ~ClassList()
         {
@@ -1111,7 +1103,7 @@ namespace TaskForExam
         /// <param name="year"></param>
         /// <param name="table"></param>
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
-            TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year, DataGrid table)
+            TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year)
         {
             string comStr1 =
                 "INSERT INTO `department`.`pers_student` (`series` ,`number` ,`sex` ,`city` ,`street` ,`home`, `flat`, `phone_number`) " +
@@ -1176,15 +1168,6 @@ namespace TaskForExam
                 "VALUES('" + id + "', '" + surname.Text + "', '" + name.Text + "', '" + middle_name.Text + "', '" + idG + "', '" + year.Text + "')";
             MySqlCommand com7 = new MySqlCommand(comStr7, myConnection);
             com7.ExecuteNonQuery();
-
-            table.Items.Add(new columnStudent()
-            {
-                surname = surname.Text,
-                name = name.Text,
-                middle_name = middle_name.Text,
-                group = group.Text,
-                year = year.Text
-            });
         }
 
         /// <summary>

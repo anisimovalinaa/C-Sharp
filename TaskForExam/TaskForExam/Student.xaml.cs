@@ -72,7 +72,7 @@ namespace TaskForExam
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            AddStudent window = new AddStudent(tableStudent);
+            AddStudent window = new AddStudent();
             window.ShowDialog();
         }
 

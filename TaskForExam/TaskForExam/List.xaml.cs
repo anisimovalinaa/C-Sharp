@@ -94,8 +94,9 @@ namespace TaskForExam
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            AddList window = new AddList(tableList);
+            AddList window = new AddList();
             window.ShowDialog();
+            Show();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)

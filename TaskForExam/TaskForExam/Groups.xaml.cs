@@ -61,6 +61,8 @@ namespace TaskForExam
                     a.InsertGroup(number.Text, spec1.Text);
                     table.Items.Clear();
                     Show();
+                    number.Clear();
+                    spec1.SelectedIndex = -1;
                 }
             }
         }
