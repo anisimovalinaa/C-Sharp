@@ -58,6 +58,9 @@ namespace TaskForExam
                 string[] mas = { "отлично", "хорошо", "удовлетворительно", "неудовлетворительно" };
                 mark.ItemsSource = mas;
             }
+            a2.Visibility = Visibility.Hidden;
+            if (semester.Text != "" && group.Text != "" && Discipline.Text != "" && student.Text != "" && mark.Text != "")
+                p.Visibility = Visibility.Hidden;
         }
 
         private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,16 +74,79 @@ namespace TaskForExam
                 Discipline.SelectedItem = null;
                 Discipline.ItemsSource = d.GetDisciplineGroup(group.SelectedItem.ToString(), type.Text, semester.Text);
             }
+            a3.Visibility = Visibility.Hidden;
+            if (type.Text != "" && semester.Text != "" && Discipline.Text != "" && student.Text != "" && mark.Text != "")
+                p.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (semester.Text == "" || group.Text == "" || Discipline.Text == "" || student.Text == "" || mark.Text == "")
-                MessageBox.Show("Заполните все поля!");
+            if (semester.Text == "")
+            {
+                a1.Visibility = Visibility.Visible;
+                p.Visibility = Visibility.Visible;
+                if (type.Text == "") a2.Visibility = Visibility.Visible;
+                if (group.Text == "") a3.Visibility = Visibility.Visible;
+                if (Discipline.Text == "") a4.Visibility = Visibility.Visible;
+                if (student.Text == "") a5.Visibility = Visibility.Visible;
+                if (mark.Text == "") a6.Visibility = Visibility.Visible;
+            }
             else
             {
-                ListInterface a = new ClassList();
-                a.AddMark(semester.Text, type.Text, group.Text, Discipline.Text, student.Text, mark.Text);
+                if (type.Text == "")
+                {
+                    a2.Visibility = Visibility.Visible;
+                    p.Visibility = Visibility.Visible;
+                    if (group.Text == "") a3.Visibility = Visibility.Visible;
+                    if (Discipline.Text == "") a4.Visibility = Visibility.Visible;
+                    if (student.Text == "") a5.Visibility = Visibility.Visible;
+                    if (mark.Text == "") a6.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    if (group.Text == "")
+                    {
+                        a3.Visibility = Visibility.Visible;
+                        p.Visibility = Visibility.Visible;
+                        if (Discipline.Text == "") a4.Visibility = Visibility.Visible;
+                        if (student.Text == "") a5.Visibility = Visibility.Visible;
+                        if (mark.Text == "") a6.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        if (Discipline.Text == "")
+                        {
+                            a4.Visibility = Visibility.Visible;
+                            p.Visibility = Visibility.Visible;
+                            if (student.Text == "") a5.Visibility = Visibility.Visible;
+                            if (mark.Text == "") a6.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            if (student.Text == "")
+                            {
+                                a5.Visibility = Visibility.Visible;
+                                p.Visibility = Visibility.Visible;
+                                if (mark.Text == "") a6.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                if (mark.Text == "")
+                                {
+                                    a6.Visibility = Visibility.Visible;
+                                    p.Visibility = Visibility.Visible;
+                                }
+                                else
+                                {
+                                    ListInterface a = new ClassList();
+                                    a.AddMark(semester.Text, type.Text, group.Text, Discipline.Text, student.Text, mark.Text);
+                                    mark.SelectedIndex = -1;
+                                    student.SelectedIndex = -1;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -92,6 +158,30 @@ namespace TaskForExam
                 Discipline.SelectedItem = null;
                 Discipline.ItemsSource = a.GetDisciplineGroup(group.Text, type.Text, semester.SelectedItem.ToString());
             }
+            a1.Visibility = Visibility.Hidden;
+            if (type.Text != "" && group.Text != "" && Discipline.Text != "" && student.Text != "" && mark.Text != "")
+                p.Visibility = Visibility.Hidden;
+        }
+
+        private void Discipline_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a4.Visibility = Visibility.Hidden;
+            if (type.Text != "" && group.Text != "" && semester.Text != "" && student.Text != "" && mark.Text != "")
+                p.Visibility = Visibility.Hidden;
+        }
+
+        private void student_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a5.Visibility = Visibility.Hidden;
+            if (type.Text != "" && group.Text != "" && Discipline.Text != "" && semester.Text != "" && mark.Text != "")
+                p.Visibility = Visibility.Hidden;
+        }
+
+        private void mark_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            a6.Visibility = Visibility.Hidden;
+            if (type.Text != "" && group.Text != "" && Discipline.Text != "" && student.Text != "" && semester.Text != "")
+                p.Visibility = Visibility.Hidden;
         }
     }
 }

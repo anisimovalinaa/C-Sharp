@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="AddTeacher" Height="356" Width="642.667">
+        Title="Добавить преподавателя" Height="356" Width="642.667" FontFamily="Times New Roman">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
             <Border CornerRadius="50" BorderBrush="Cyan" BorderThickness="2"
@@ -20,16 +20,16 @@
         <Label Content="Имя:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="26,61,0,0" VerticalAlignment="Top"/>
         <Label Content="Отчество:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="26,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Пол:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="28,144,0,0" VerticalAlignment="Top"/>
-        <Label Content="Серия:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="26,198,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.261,0.731"/>
-        <Label Content="Номер:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="179,201,0,0" VerticalAlignment="Top"/>
+        <Label Content="Серия:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="28,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.261,0.731"/>
+        <Label Content="Номер:" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="179,202,0,0" VerticalAlignment="Top"/>
         <Label HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="65,175,0,0" VerticalAlignment="Top">
             <TextBlock TextDecorations="Underline">Паспорт</TextBlock>
         </Label>
         <TextBox x:Name="surname" FontFamily="Times New Roman" HorizontalAlignment="Left" Height="23" Margin="128,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="surname_TextChanged"/>
         <TextBox x:Name="name" FontFamily="Times New Roman" HorizontalAlignment="Left" Height="23" Margin="128,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="name_TextChanged"/>
         <TextBox x:Name="middle_name" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="128,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="middle_name_TextChanged"/>
-        <TextBox x:Name="series" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="83,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="number" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="233,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="series" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="73,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="number" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="226,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" TextChanged="number_TextChanged"/>
         <Border BorderBrush="Navy" CornerRadius="8,8,8,8" BorderThickness="1" HorizontalAlignment="Left" Height="228" Margin="358,20,0,0" VerticalAlignment="Top" Width="258">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -71,8 +71,8 @@
         <TextBox x:Name="street" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="466,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="street_TextChanged"/>
         <TextBox x:Name="city" HorizontalAlignment="Left" FontFamily="Times New Roman" Height="23" Margin="466,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="city_TextChanged"/>
         <Label Content="Ученое звание:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="27,250,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="add" Template="{StaticResource btTemplate}" Foreground="Navy" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="368,263,0,0" VerticalAlignment="Top" Width="163" Height="43" Click="add_Click" RenderTransformOrigin="0.442,0.411"/>
-        <ComboBox x:Name="rank" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="135,252,0,0" VerticalAlignment="Top" Width="120">
+        <Button x:Name="add" Template="{StaticResource btTemplate}" Foreground="Navy" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="312,265,0,0" VerticalAlignment="Top" Width="163" Height="43" Click="add_Click" RenderTransformOrigin="0.442,0.411"/>
+        <ComboBox x:Name="rank" HorizontalAlignment="Left" FontFamily="Times New Roman" Margin="135,252,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="rank_SelectionChanged">
             <TextBlock>Профессор</TextBlock>
             <TextBlock>Доцент</TextBlock>
             <TextBlock>Старший научный сотрудник</TextBlock>
@@ -99,5 +99,17 @@
                 </ToolTip>
             </TextBox.ToolTip>
         </TextBox>
+        <Label x:Name="a1" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="243,23,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a2" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="243,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a3" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="243,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a4" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="312,137,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a5" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="332,194,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a6" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="157,194,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a7" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="250,242,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a8" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="250,276,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a9" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="581,72,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a10" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="581,116,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="a11" Visibility="Hidden" Content="!" Foreground="Brown" FontSize="25" HorizontalAlignment="Left" Margin="581,153,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="p" Visibility="Hidden" Content="*заполните все обязательные поля" Foreground="Brown" FontSize="12" HorizontalAlignment="Left" Margin="439,276,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

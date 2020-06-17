@@ -85,7 +85,7 @@ namespace TaskForExam
                             || (ch >= 'А' && ch <= 'Я')
                             || ch == 'ё' || ch == 'Ё' || ch == '-'
                             || (ch >='a' && ch<= 'z')
-                            || (ch >='A' && ch<='Z')
+                            || (ch >='A' && ch<='Z') || ch == ' '
                          )
                          .ToArray()
                     );

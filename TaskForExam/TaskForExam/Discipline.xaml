@@ -9,7 +9,7 @@
       Title="Discipline" FontFamily="Times New Roman" FontSize="15">
 
     <Grid>
-        <DataGrid x:Name="tableDiscipline" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="666" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="tableDiscipline" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=discipline}" ClipboardContentBinding="{x:Null}" Header="Дисциплина" CanUserResize="False" Width="200">
                     <DataGridTextColumn.ElementStyle>

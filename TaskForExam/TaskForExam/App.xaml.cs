@@ -176,7 +176,7 @@ namespace TaskForExam
         /// <param name="year"></param>
         /// <param name="table"></param>
         void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
-            TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year);
+            TextBox surname, TextBox name, TextBox middle_name, ComboBox group, TextBox year);
 
         /// <summary>
         /// Выводит список студентов указанной группы
@@ -462,9 +462,11 @@ namespace TaskForExam
         public List<string> GetDisciplineGroup(string group, string type, string semester)
         {
             List<string> disc = new List<string>();
-            string comStr2 = "SELECT `name` FROM  `discipline` WHERE id = (SELECT `discipline` FROM `list` " +
-                "WHERE `group` = (SELECT `id` FROM `group` WHERE `number` = " + group + ") AND `type` = '" + type + "') " +
-                "AND `semester` = '" + semester + "'";
+            string comStr2 = "SELECT d.name, l.type, g.number " +
+                    "FROM  `list` l " +
+                    "LEFT OUTER JOIN `discipline` d ON d.id = l.discipline " +
+                    "LEFT OUTER JOIN `group` g ON g.id = l.group " +
+                    "WHERE l.type = '" + type + "' AND d.semester = '" + semester + "' AND g.number = '" + group + "'";
             MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
             MySqlDataReader reader = com2.ExecuteReader();
 
@@ -1103,7 +1105,7 @@ namespace TaskForExam
         /// <param name="year"></param>
         /// <param name="table"></param>
         public void Insert(TextBox series, TextBox number, string sex, TextBox city, TextBox street, TextBox numberH, TextBox flat, TextBox phone,
-            TextBox surname, TextBox name, TextBox middle_name, TextBox group, ComboBox spec, TextBox year)
+            TextBox surname, TextBox name, TextBox middle_name, ComboBox group, TextBox year)
         {
             string comStr1 =
                 "INSERT INTO `department`.`pers_student` (`series` ,`number` ,`sex` ,`city` ,`street` ,`home`, `flat`, `phone_number`) " +
@@ -1133,35 +1135,6 @@ namespace TaskForExam
                 if (reader2[1].ToString() == group.Text) idG = reader2[0].ToString();
             }
             reader2.Close();
-
-            if (idG == "")
-            {
-                string comstr4 = "SELECT * FROM speciality";
-                MySqlCommand com4 = new MySqlCommand(comstr4, myConnection);
-                MySqlDataReader reader3 = com4.ExecuteReader();
-
-                string idS = "";
-                while (reader3.Read())
-                {
-                    if (reader3[1].ToString() == spec.Text) idS = reader3[0].ToString();
-                }
-                reader3.Close();
-
-                string comStr5 = "INSERT INTO `department`.`group` (`number` ,`speciality`)" +
-                "VALUES('" + group.Text + "', '" + idS + "')";
-                MySqlCommand com5 = new MySqlCommand(comStr5, myConnection);
-                com5.ExecuteNonQuery();
-
-                string comstr6 = "SELECT * FROM pers_student";
-                MySqlCommand com6 = new MySqlCommand(comstr6, myConnection);
-                MySqlDataReader reader4 = com6.ExecuteReader();
-
-                while (reader4.Read())
-                {
-                    idG = reader4[0].ToString();
-                }
-                reader4.Close();
-            }
 
             string comStr7 =
                 "INSERT INTO `department`.`student` (`id`, `surname` ,`name` ,`middle_name` ,`group` ,`year`)" +

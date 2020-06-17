@@ -8,7 +8,7 @@
         Title="Добавить успеваемость" FontFamily="Times New Roman" Height="266.675" Width="347">
 
     <Grid>
-        <ScrollViewer Height="229" Width="320">
+        <ScrollViewer Width="320" Margin="10,0,9,0">
             <GroupBox Width="320" Height="335">
                 <Grid Margin="0,0,-12,0">
                     <Label Content="Тип:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="27,68,0,0" VerticalAlignment="Top"/>
@@ -22,15 +22,21 @@
                         <TextBlock>Дифференцированный зачет</TextBlock>
                     </ComboBox>
                     <ComboBox x:Name="group"  FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,107,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="group_SelectionChanged"/>
-                    <ComboBox x:Name="mark" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,233,0,0" VerticalAlignment="Top" Width="120"></ComboBox>
-                    <ComboBox x:Name="Discipline" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,149,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="student" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,192,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="mark" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,233,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="mark_SelectionChanged"></ComboBox>
+                    <ComboBox x:Name="Discipline" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,149,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="Discipline_SelectionChanged"/>
+                    <ComboBox x:Name="student" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,192,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="student_SelectionChanged"/>
                     <Button Content="Добавить" BorderBrush="Transparent" Background="PowderBlue" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="102,280,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click" Height="23"/>
                     <ComboBox x:Name="semester" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="117,32,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="semester_SelectionChanged"></ComboBox>
                     <Label Content="Семестр:" HorizontalAlignment="Left" Margin="24,26,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="a1" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="232,22,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="a2" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="232,58,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="a3" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="232,97,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="a4" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="232,139,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="a5" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="232,182,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="a6" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="232,223,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="p" Visibility="Hidden" Content="*заполните все поля" FontSize="10" Foreground="Brown" HorizontalAlignment="Left" Margin="187,281,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </GroupBox>
-
         </ScrollViewer>
 
     </Grid>

@@ -9,7 +9,7 @@
       Title="List" FontSize="15"  FontFamily="Times New Roman">
 
     <Grid>
-        <DataGrid x:Name="tableList" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="656" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="tableList" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=discipline}" ClipboardContentBinding="{x:Null}" Header="Дисциплина" CanUserResize="False" Width="200">
                     <DataGridTextColumn.ElementStyle>
@@ -19,7 +19,13 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path=group}" ClipboardContentBinding="{x:Null}" Header="Группа" CanUserResize="False" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=type}" ClipboardContentBinding="{x:Null}" Header="Тип" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=type}" ClipboardContentBinding="{x:Null}" Header="Тип" CanUserResize="False" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path=teacher}" ClipboardContentBinding="{x:Null}" Header="Преподаватель" CanUserResize="False" Width="250">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">

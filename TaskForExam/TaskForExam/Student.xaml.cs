@@ -74,6 +74,7 @@ namespace TaskForExam
         {
             AddStudent window = new AddStudent();
             window.ShowDialog();
+            Show();
         }
 
         private void group_SelectionChanged(object sender, SelectionChangedEventArgs e)
