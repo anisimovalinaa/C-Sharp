@@ -38,5 +38,14 @@ namespace TaskForExam
             s.Cancel = false;
             Close();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                s.Cancel = false;
+                Close();
+            }
+        }
     }
 }

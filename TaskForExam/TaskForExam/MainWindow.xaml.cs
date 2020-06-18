@@ -101,5 +101,61 @@ namespace TaskForExam
             ButtonClick(group);
             frame.Navigate(new Groups());
         }
+
+        private void MenuItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            pop1.IsOpen = true;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F1)
+            {
+                ButtonClick(teacher);
+                frame.Navigate(new Teacher());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F2)
+            {
+                ButtonClick(teacher_pers);
+                frame.Navigate(new PersTeacher());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F3)
+            {
+                ButtonClick(student);
+                frame.Navigate(new Student());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F4)
+            {
+                ButtonClick(student_pers);
+                frame.Navigate(new PersStudent());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F5)
+            {
+                ButtonClick(list);
+                frame.Navigate(new List());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F6)
+            {
+                ButtonClick(discipline);
+                frame.Navigate(new Discipline());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F7)
+            {
+                ButtonClick(record);
+                frame.Navigate(new AcademicRecord());
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.F8)
+            {
+                ButtonClick(group);
+                frame.Navigate(new Groups());
+            }
+        }
+
+        private void MenuItem_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            pop2.IsOpen = true;
+        }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
         Title="Close" Height="202.577" Width="425.773" 
-        AllowsTransparency="True" WindowStyle="None" Background="Transparent">
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" KeyDown="Window_KeyDown">
     <Window.Template>
         <ControlTemplate TargetType="Window">
             <Border Name="newBorder" CornerRadius="10,150,10,150" BorderThickness="2" BorderBrush="DarkBlue" Background="LightBlue">
