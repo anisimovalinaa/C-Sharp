@@ -9,9 +9,9 @@
       Title="AcademicRecord" FontFamily="Times New Roman">
 
     <Grid>
-        <DataGrid x:Name="table" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="648" FontSize="15"  FontFamily="Times New Roman">
+        <DataGrid x:Name="table" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=list}" ClipboardContentBinding="{x:Null}" Header="Ведомость" CanUserResize="False" Width="380">
+                <DataGridTextColumn Binding="{Binding Path=list}" ClipboardContentBinding="{x:Null}" Header="Ведомость" CanUserResize="False" Width="320">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"></Setter>
@@ -25,7 +25,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=mark}" ClipboardContentBinding="{x:Null}" Header="Оценка" CanUserResize="False" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Path=mark}" ClipboardContentBinding="{x:Null}" Header="Оценка" CanUserResize="False" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
         <Expander Header="Показать успеваемость" HorizontalAlignment="Left" FontSize="15" Height="208" Margin="672,29,0,0" VerticalAlignment="Top" Width="263">

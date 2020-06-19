@@ -21,6 +21,7 @@ namespace TaskForExam
     /// </summary>
     public partial class AcademicRecord : Page
     {
+        string[] mas3 = { "..выберете тип, семестр и группу" };
         public AcademicRecord()
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace TaskForExam
             semester.ItemsSource = mas1;
             string[] mas2 = { "Зачет", "Экзамен", "Дифференцированный зачет"};
             type.ItemsSource = mas2;
-            string[] mas3 = { "..выберете тип, семестр и группу" };
             disc.ItemsSource = mas3;
         }
         private void Show()
@@ -147,6 +147,7 @@ namespace TaskForExam
 
         private void disc_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (disc.ItemsSource == mas3) disc.SelectedIndex = - 1;
             a4.Visibility = Visibility.Hidden;
             if (semester.Text != "" && type.Text != "" && group.Text != "") p.Visibility = Visibility.Hidden;
         }

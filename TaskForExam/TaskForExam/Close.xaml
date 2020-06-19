@@ -12,8 +12,8 @@
             <Border Name="newBorder" CornerRadius="10,150,10,150" BorderThickness="2" BorderBrush="DarkBlue" Background="LightBlue">
                 <Grid>
                     <ContentPresenter />
-                    <!--<Border BorderBrush="Honeydew" BorderThickness="5" Margin="20"/>-->
                 </Grid>
+                
             </Border>
         </ControlTemplate>
     </Window.Template>

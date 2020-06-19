@@ -19,16 +19,16 @@ namespace TaskForExam
     /// </summary>
     public partial class AddRating : Window
     {
+        string[] mas = { "...выберите тип" };
+        string[] mas1 = { "...выберите группу" };
+        string[] mas2 = { "...выберите группу, тип и семестр" };
         public AddRating()
         {
             InitializeComponent();
             StudentInterface a = new ClassStudent();
             group.ItemsSource = a.GetGroup();
-            string[] mas = { "...выберите тип" };
             mark.ItemsSource = mas;
-            string[] mas1 = { "...выберите группу" };
             student.ItemsSource = mas1;
-            string[] mas2 = { "...выберите группу, тип и семестр" };
             Discipline.ItemsSource = mas2;
             string[] mas3 = { "1", "2", "3", "4", "5", "6", "7", "8" };
             semester.ItemsSource = mas3;
@@ -165,6 +165,7 @@ namespace TaskForExam
 
         private void Discipline_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (Discipline.ItemsSource == mas2) Discipline.SelectedIndex = -1;
             a4.Visibility = Visibility.Hidden;
             if (type.Text != "" && group.Text != "" && semester.Text != "" && student.Text != "" && mark.Text != "")
                 p.Visibility = Visibility.Hidden;
@@ -172,6 +173,7 @@ namespace TaskForExam
 
         private void student_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (student.ItemsSource == mas1) student.SelectedIndex = -1;
             a5.Visibility = Visibility.Hidden;
             if (type.Text != "" && group.Text != "" && Discipline.Text != "" && semester.Text != "" && mark.Text != "")
                 p.Visibility = Visibility.Hidden;
@@ -179,6 +181,7 @@ namespace TaskForExam
 
         private void mark_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (mark.ItemsSource == mas) mark.SelectedIndex = -1;
             a6.Visibility = Visibility.Hidden;
             if (type.Text != "" && group.Text != "" && Discipline.Text != "" && student.Text != "" && semester.Text != "")
                 p.Visibility = Visibility.Hidden;

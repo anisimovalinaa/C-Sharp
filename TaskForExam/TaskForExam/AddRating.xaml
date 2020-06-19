@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="Добавить успеваемость" FontFamily="Times New Roman" Height="266.675" Width="347">
+        Title="Добавить успеваемость" FontFamily="Times New Roman" FontSize="15" Height="266.675" Width="347">
 
     <Grid>
         <ScrollViewer Width="320" Margin="10,0,9,0">
