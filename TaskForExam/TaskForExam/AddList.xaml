@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="AddList" Height="337" Width="365" FontFamily="Times New Roman" FontSize="15">
+        Title="Добавление ведомости" Height="337" Width="365" FontFamily="Times New Roman" FontSize="15">
     <Grid>
         <ComboBox x:Name="disc" HorizontalAlignment="Left" Margin="161,154,0,0" VerticalAlignment="Top" Width="134" Height="25" SelectionChanged="disc_SelectionChanged"/>
         <ComboBox x:Name="group" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="161,108,0,0" SelectionChanged="group_SelectionChanged"></ComboBox>

@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="Добавить успеваемость" FontFamily="Times New Roman" FontSize="15" Height="266.675" Width="347">
+        Title="Добавление успеваемости" FontFamily="Times New Roman" FontSize="15" Height="266.675" Width="347">
 
     <Grid>
-        <ScrollViewer Width="320" Margin="10,0,9,0">
-            <GroupBox Width="320" Height="335">
+        <ScrollViewer Margin="10,0,18,0">
+            <GroupBox Width="336" Height="335">
                 <Grid Margin="0,0,-12,0">
                     <Label Content="Тип:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="27,68,0,0" VerticalAlignment="Top"/>
                     <Label Content="Группа:" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="27,107,0,0" VerticalAlignment="Top"/>

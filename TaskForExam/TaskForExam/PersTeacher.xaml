@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="PersTeacher" FontSize="15" FontFamily="Times New Roman">
+      Title="Контакты преподавателей" FontSize="15" FontFamily="Times New Roman">
 
     <Grid>
         <DataGrid x:Name="tablePersTeacher" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="900">

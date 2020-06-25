@@ -5,24 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-       Title="MainWindow" Height="600" Width="1200" Closing="Window_Closing" FontFamily="Times New Roman" KeyDown="Window_KeyDown">
+       Title="Автоматизация деятельности ученого секретаря кафедры" Height="600" Width="1200" Closing="Window_Closing" FontFamily="Times New Roman" KeyDown="Window_KeyDown">
 
     <Grid>
-        <Popup Name="pop1" StaysOpen="False" Placement="Mouse" MaxWidth="250" PopupAnimation="Slide" AllowsTransparency="True">
-            <Border CornerRadius="10" BorderBrush="LightBlue" BorderThickness="2" Background="White" Height="312">
+        <Popup Name="pop1" StaysOpen="False" Placement="Mouse" MaxWidth="400" PopupAnimation="Slide" AllowsTransparency="True">
+            <Border CornerRadius="10" BorderBrush="LightBlue" BorderThickness="2" Background="White" Height="370">
                 <StackPanel Margin="0,0,0,-189">
-                    <TextBlock Margin="10" TextWrapping="Wrap">
-                    Студентка Кубанского Госудаственного Университета <LineBreak></LineBreak> Группа 26 <LineBreak></LineBreak> 
+                    <TextBlock Margin="10" FontSize="15" TextWrapping="Wrap">
+                    Студентка Кубанского Госудаственного Университета <LineBreak></LineBreak> Факультет КТиПМ <LineBreak></LineBreak>
+                        Группа 26 <LineBreak></LineBreak> 
                     Анисимова Алина Александровна <LineBreak></LineBreak> E-mail: anisimova.linaa@yandex.ru
                     </TextBlock>
-                    <Image Source="C:\Users\ASUS\source\repos\WpfApp1\photo1.jpg" Height="196" Width="202" />
+                    <Image Source="Resources/photo.jpg" Height="248" Width="249" />
                 </StackPanel>
             </Border>
         </Popup>
         <Popup Name="pop2" StaysOpen="False" Placement="Mouse" PopupAnimation="Slide" AllowsTransparency="True">
-            <Border CornerRadius="10" BorderBrush="LightBlue" BorderThickness="2" Background="White" Height="184">
+            <Border CornerRadius="10" BorderBrush="LightBlue" BorderThickness="2" Background="White" Height="202">
                 <StackPanel>
-                    <TextBlock Margin="10" TextWrapping="Wrap" FontSize="14">
+                    <TextBlock Margin="10" TextWrapping="Wrap" FontSize="15">
                     Горячие клавиши: <LineBreak></LineBreak> Shift + F1 - открытие таблицы "Преподаватели" <LineBreak></LineBreak> 
                     Shift + F2 - открытие таблицы "Контакты преподавтелей" <LineBreak></LineBreak>
                     Shift + F3 - открытие таблицы "Студенты" <LineBreak></LineBreak>
@@ -31,18 +32,18 @@
                     Shift + F6 - открытие таблицы "Дисциплины" <LineBreak></LineBreak>
                     Shift + F7 - открытие таблицы "Успеваемость" <LineBreak></LineBreak>
                     Shift + F8 - открытие таблицы "Группы" <LineBreak></LineBreak>
-                    esc - закрытие приложения 
+                    esc - закрытие приложения
                     </TextBlock>
 
                 </StackPanel>
             </Border>
         </Popup>
 
-            <Menu FontFamily="Times New Roman">
+        <Menu FontFamily="Times New Roman">
             <MenuItem Header="Сведения о создателе" Height="24" MouseEnter="MenuItem_MouseEnter" />
             <MenuItem Header="О приложении" Height="24" MouseEnter="MenuItem_MouseEnter_1"/>
         </Menu>
-        <Frame x:Name ="frame" Height="569" Width="940" Content="" Margin="252,0,0,0"/>
+        <Frame x:Name ="frame" NavigationUIVisibility="Hidden" Height="569" Width="940" Content="" Margin="252,0,0,0"/>
         <Button x:Name="teacher" Content="Преподаватели" BorderBrush="Transparent" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="teacher_Click" ></Button>
         <Button x:Name="student" Content="Студенты" BorderBrush="Transparent" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="student_Click" />
         <Button x:Name="student_pers" BorderBrush="Transparent" Content="Контакты студентов" FontFamily ="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="237" Height="52" Click="student_pers_Click"/>

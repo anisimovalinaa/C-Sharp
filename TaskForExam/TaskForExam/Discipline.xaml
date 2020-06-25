@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="Discipline" FontFamily="Times New Roman" FontSize="15">
+      Title="Дисциплины" FontFamily="Times New Roman" FontSize="15">
 
     <Grid>
         <DataGrid x:Name="tableDiscipline" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">

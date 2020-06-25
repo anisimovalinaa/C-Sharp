@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="AddStudent" Height="378.833" Width="651.5" FontFamily="Times New Roman">
+        Title="Добавление студента" Height="378.833" Width="651.5" FontFamily="Times New Roman">
 
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">

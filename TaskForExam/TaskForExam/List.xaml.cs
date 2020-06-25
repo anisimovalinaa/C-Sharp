@@ -29,6 +29,8 @@ namespace TaskForExam
             group.ItemsSource = a.GetGroup();
             TeacherInterface t = new ClassTeacher();
             teacher.ItemsSource = t.GetTeacher();
+            string[] mas1 = { "1", "2", "3", "4", "5", "6", "7", "8" };
+            semester.ItemsSource = mas1;
         }
         private void Show()
         {
@@ -44,6 +46,7 @@ namespace TaskForExam
                 a1.Visibility = Visibility.Visible;
                 p.Visibility = Visibility.Visible;
                 if (group.Text == "") a2.Visibility = Visibility.Visible;
+                if (semester.Text == "") a5.Visibility = Visibility.Visible;
             }
             else
             {
@@ -51,12 +54,21 @@ namespace TaskForExam
                 {
                     a2.Visibility = Visibility.Visible;
                     p.Visibility = Visibility.Visible;
+                    if (semester.Text == "") a5.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    tableList.Items.Clear();
-                    ListInterface a = new ClassList();
-                    a.ShowGroup(tableList, type.Text, group.Text);
+                    if (semester.Text == "")
+                    {
+                        a5.Visibility = Visibility.Visible;
+                        p.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        tableList.Items.Clear();
+                        ListInterface a = new ClassList();
+                        a.ShowGroupList(tableList, type.Text, group.Text, semester.Text);
+                    }
                 }
             }
         }
@@ -80,7 +92,7 @@ namespace TaskForExam
                 {
                     tableList.Items.Clear();
                     ListInterface a = new ClassList();
-                    a.ShowTeacher(tableList, type1.Text, teacher.Text);
+                    a.ShowTeacherList(tableList, type1.Text, teacher.Text);
                 }
             }
         }

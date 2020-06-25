@@ -50,7 +50,7 @@ namespace TaskForExam
             mark.SelectedItem = null;
             if (type.SelectedIndex == 0)
             {
-                string[] mas = { "зачтено" };
+                string[] mas = { "зачтено", "не зачтено" };
                 mark.ItemsSource = mas;
             }
             else

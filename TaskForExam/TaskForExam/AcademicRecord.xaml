@@ -6,26 +6,26 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="AcademicRecord" FontFamily="Times New Roman">
+      Title="Успеваемость" FontFamily="Times New Roman">
 
     <Grid>
         <DataGrid x:Name="table" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=list}" ClipboardContentBinding="{x:Null}" Header="Ведомость" CanUserResize="False" Width="320">
+                <DataGridTextColumn Binding="{Binding Path=list}" ClipboardContentBinding="{x:Null}" Header="Ведомость" CanUserResize="False" Width="300">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"></Setter>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=student}" ClipboardContentBinding="{x:Null}" Header="Студент" CanUserResize="False" Width="200">
+                <DataGridTextColumn Binding="{Binding Path=student}" ClipboardContentBinding="{x:Null}" Header="Студент" CanUserResize="False" Width="188">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"></Setter>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=mark}" ClipboardContentBinding="{x:Null}" Header="Оценка" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=mark}" ClipboardContentBinding="{x:Null}" Header="Оценка" CanUserResize="False" Width="132"/>
             </DataGrid.Columns>
         </DataGrid>
         <Expander Header="Показать успеваемость" HorizontalAlignment="Left" FontSize="15" Height="208" Margin="672,29,0,0" VerticalAlignment="Top" Width="263">

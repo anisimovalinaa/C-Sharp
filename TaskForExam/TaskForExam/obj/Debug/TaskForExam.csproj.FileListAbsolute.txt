@@ -97,3 +97,7 @@ C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\obj\Debug\TaskFor
 C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\obj\Debug\TaskForExam.pdb
 C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\obj\Debug\Groups.g.cs
 C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\obj\Debug\Groups.baml
+C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\bin\Debug\TaskForExam.exe.manifest
+C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\bin\Debug\TaskForExam.application
+C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\obj\Debug\TaskForExam.exe.manifest
+C:\Users\ASUS\Documents\GitHub\C-Sharp\TaskForExam\TaskForExam\obj\Debug\TaskForExam.application

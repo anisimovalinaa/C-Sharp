@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="List" FontSize="15"  FontFamily="Times New Roman">
+      Title="Ведомости" FontSize="15"  FontFamily="Times New Roman">
 
     <Grid>
         <DataGrid x:Name="tableList" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">
@@ -42,7 +42,7 @@
             <TextBlock>Зачет</TextBlock>
             <TextBlock>Дифференцированный зачет</TextBlock>
         </ComboBox>
-        <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="761,125,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" Height="27"/>
+        <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="761,152,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" Height="27"/>
         <ComboBox x:Name="group" HorizontalAlignment="Left" Margin="804,86,0,0" VerticalAlignment="Top" Width="109" SelectionChanged="group_SelectionChanged"/>
         <Label Content="Показать все:" HorizontalAlignment="Left" Margin="681,258,0,0" VerticalAlignment="Top"/>
         <Label Content="Преподавателя:" HorizontalAlignment="Left" Margin="681,289,0,0" VerticalAlignment="Top"/>
@@ -64,9 +64,12 @@
         <Button Content="Показать" BorderBrush="Transparent" Background="PowderBlue" HorizontalAlignment="Left" Margin="752,340,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click_3" Height="27"/>
         <Label x:Name="a1" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="913,46,0,0" VerticalAlignment="Top"/>
         <Label x:Name="a2" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="913,78,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="p" Visibility="Hidden" Content="*заполните все поля" Foreground="Brown" HorizontalAlignment="Left" Margin="738,152,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label x:Name="p" Visibility="Hidden" Content="*заполните все поля" Foreground="Brown" HorizontalAlignment="Left" Margin="739,179,0,0" VerticalAlignment="Top" Width="153"/>
         <Label x:Name="a3" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="918,252,0,0" VerticalAlignment="Top"/>
         <Label x:Name="a4" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="918,285,0,0" VerticalAlignment="Top"/>
         <Label x:Name="p2" Visibility="Hidden" Content="*заполните все поля" Foreground="Brown" HorizontalAlignment="Left" Margin="726,367,0,0" VerticalAlignment="Top"/>
+        <Label Content="Семестр:" HorizontalAlignment="Left" Margin="703,109,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="semester" HorizontalAlignment="Left" Margin="804,117,0,0" VerticalAlignment="Top" Width="109" SelectionChanged="group_SelectionChanged"/>
+        <Label x:Name="a5" Visibility="Hidden" Content="!" FontSize="25" Foreground="Brown" HorizontalAlignment="Left" Margin="912,109,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

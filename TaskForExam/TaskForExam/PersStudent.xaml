@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="PersStudent" FontSize="15" FontFamily="Times New Roman">
+      Title= "Контакты студентов" FontSize="15" FontFamily="Times New Roman">
 
     <Grid>
         <DataGrid x:Name="tablePersStudent" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" Width="722" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=surname}" ClipboardContentBinding="{x:Null}" Header="Фамилия" CanUserResize="False" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=name}" ClipboardContentBinding="{x:Null}" Header="Имя" CanUserResize="False" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=middle_name}" ClipboardContentBinding="{x:Null}" Header="Отчество" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=middle_name}" ClipboardContentBinding="{x:Null}" Header="Отчество" CanUserResize="False" Width="130"/>
                 <DataGridTextColumn Binding="{Binding Path=series}" ClipboardContentBinding="{x:Null}" Header="Серия паспорта" CanUserResize="False" Width="110"/>
                 <DataGridTextColumn Binding="{Binding Path=number}" ClipboardContentBinding="{x:Null}" Header="Номер паспорта" CanUserResize="False" Width="120"/>
                 <DataGridTextColumn Binding="{Binding Path=sex}" ClipboardContentBinding="{x:Null}" Header="Пол" CanUserResize="False" Width="80"/>

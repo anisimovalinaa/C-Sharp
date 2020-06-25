@@ -9,6 +9,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Win32;
 using System.Windows.Controls;
 using MySql.Data.MySqlClient;
+using System.Windows.Input;
 
 namespace TaskForExam
 {
@@ -28,24 +29,21 @@ namespace TaskForExam
         public static Excel.Workbook TableToExcel(DataGrid table)
         {
             Excel.Application excel = new Excel.Application();
-            Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
-            Excel.Worksheet sheet1 = (Excel.Worksheet)excel.Worksheets.get_Item(1);
+            excel.DisplayAlerts = false;
+            Excel.Workbook workbook = excel.Workbooks.Add();
+            Excel.Worksheet ws = workbook.ActiveSheet;
 
-            for (int j = 0; j < table.Columns.Count; j++)
-            {
-                Excel.Range myRange = (Excel.Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true;
-                myRange.Value2 = table.Columns[j].Header;
-            }
-            for (int i = 0; i < table.Columns.Count; i++)
-            {
-                for (int j = 0; j < table.Items.Count; j++)
-                {
-                    TextBlock b = table.Columns[i].GetCellContent(table.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
-                }
-            }
+            table.SelectAllCells();
+            int column = table.Columns.Count - 1;
+            table.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+            ApplicationCommands.Copy.Execute(null, table);
+            ws.Paste();
+            ws.Range["A1", ((char)(65 + column)) + "1"].Font.Bold = true;
+            int number1 = ws.UsedRange.Rows.Count;
+            Excel.Range myRange = ws.Range["A1", ((char)(65 + column)) + number1.ToString()];
+            myRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+            myRange.WrapText = false;
+            ws.Columns.EntireColumn.AutoFit();
             return workbook;
         }
         /// <summary>
@@ -56,14 +54,14 @@ namespace TaskForExam
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-            saveFileDialog1.Filter = "xls files (*.xls)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.Filter = "Excel documents (*.xlsx)|*.xlsx";
             saveFileDialog1.RestoreDirectory = true;
             if (saveFileDialog1.ShowDialog() == true)
             {
                 string fileName = saveFileDialog1.FileName;
-                workbook.SaveAs(fileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                //sheet1 = (Excel.Worksheet)workbook.Sheets.get_Item(1);
+                workbook.SaveAs(fileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, 
+                    Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, 
+                    Type.Missing, Type.Missing);
             }
         }
     }
@@ -280,7 +278,7 @@ namespace TaskForExam
         /// <param name="table"></param>
         /// <param name="type"></param>
         /// <param name="group"></param>
-        void ShowGroup(DataGrid table, string type, string group);
+        void ShowGroupList(DataGrid table, string type, string group, string semester);
 
         /// <summary>
         /// Выводит список ведомостей в DataGrid с указанием преподавателя и типа ведомости
@@ -288,7 +286,7 @@ namespace TaskForExam
         /// <param name="table"></param>
         /// <param name="type"></param>
         /// <param name="teacher"></param>
-        void ShowTeacher(DataGrid table, string type, string teacher);
+        void ShowTeacherList(DataGrid table, string type, string teacher);
 
         /// <summary>
         /// Получает список дисциплин из таблицы ведомостей с указанием группы, типа ведомости и семестра
@@ -605,7 +603,7 @@ namespace TaskForExam
         /// <param name="table"></param>
         /// <param name="type"></param>
         /// <param name="teacher"></param>
-        public void ShowTeacher(DataGrid table, string type, string teacher)
+        public void ShowTeacherList(DataGrid table, string type, string teacher)
         {
             string[] nameT = teacher.Split(' ');
 
@@ -636,14 +634,14 @@ namespace TaskForExam
         /// <param name="table"></param>
         /// <param name="type"></param>
         /// <param name="group"></param>
-        public void ShowGroup(DataGrid table, string type, string group)
+        public void ShowGroupList(DataGrid table, string type, string group, string semester)
         {
-            string comStr = "SELECT b.name, c.number, a.type, d.surname, d.name, d.middle_name " +
+            string comStr = "SELECT b.name, b.semester, c.number, a.type, d.surname, d.name, d.middle_name " +
                 "FROM `list` a " +
                 "LEFT OUTER JOIN `discipline` b ON b.id = a.discipline " +
                 "LEFT OUTER JOIN `group` c ON c.id = a.group " +
                 "LEFT OUTER JOIN `teacher` d ON d.id = a.teacher " +
-                "WHERE (a.type = '" + type + "' AND c.number = " + group + ")";
+                "WHERE (a.type = '" + type + "' AND c.number = '" + group + "' AND b.semester = " + semester + ")";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();
 
@@ -651,10 +649,10 @@ namespace TaskForExam
             {
                 table.Items.Add(new columnList()
                 {
-                    discipline = reader[0].ToString(),
-                    group = reader[1].ToString(),
-                    type = reader[2].ToString(),
-                    teacher = reader[3].ToString() + " " + reader[4].ToString() + " " + reader[5].ToString()
+                    discipline = reader[0].ToString() + ". Семестр " + reader[1].ToString(),
+                    group = reader[2].ToString(),
+                    type = reader[3].ToString(),
+                    teacher = reader[4].ToString() + " " + reader[5].ToString() + " " + reader[6].ToString()
                 });
             }
             reader.Close();
@@ -670,23 +668,13 @@ namespace TaskForExam
         /// <param name="speciality"></param>
         public void AddDiscipline(string name, string hours, string semester, string speciality)
         {
-            string comstr1 = "SELECT * FROM `speciality` " +
+            string idS = "SELECT `id` FROM `speciality` " +
                 "WHERE name = '" + speciality + "'";
-            MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
-            MySqlDataReader reader1 = com1.ExecuteReader();
-
-            string idS = "";
-            while (reader1.Read())
-            {
-                idS = reader1[0].ToString();
-            }
-            reader1.Close();
-
-            string comStr2 =
+            string comStr =
                 "INSERT INTO `department`.`discipline` (`name` ,`hours` ,`semester` ,`speciality`)" +
-                "VALUES('" + name + "', '" + hours + "', '" + semester + "', '" + idS + "')";
-            MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
-            com2.ExecuteNonQuery();
+                "VALUES('" + name + "', '" + hours + "', '" + semester + "', (" + idS + "))";
+            MySqlCommand com = new MySqlCommand(comStr, myConnection);
+            com.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -700,45 +688,18 @@ namespace TaskForExam
         /// <param name="table"></param>
         public void InsertList(string semester, string discipline, string group, string type, string teacher)
         {
-            string comstr1 = "SELECT * FROM `discipline` WHERE name = '" + discipline + "' AND `semester` = '" + semester + "'";
-            MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
-            MySqlDataReader reader1 = com1.ExecuteReader();
+            string idD = "SELECT `id` FROM `discipline` WHERE name = '" + discipline + "' AND `semester` = '" + semester + "'";
 
-            string idD = "";
-            while (reader1.Read())
-            {
-                idD = reader1[0].ToString();
-            }
-            reader1.Close();
-
-            string comstr2 = "SELECT * FROM `group` WHERE number = '" + group + "'";
-            MySqlCommand com2 = new MySqlCommand(comstr2, myConnection);
-            MySqlDataReader reader2 = com2.ExecuteReader();
-
-            string idG = "";
-            while (reader2.Read())
-            {
-                idG = reader2[0].ToString();
-            }
-            reader2.Close();
+            string idG = "SELECT `id` FROM `group` WHERE number = '" + group + "'";
 
             string[] nameT = teacher.Split(' ');
-            string comstr3 = "SELECT * FROM `teacher` WHERE (surname = '" + nameT[0] + "' AND name = '" + nameT[1] + "' AND middle_name = '" + nameT[2] + "')";
-            MySqlCommand com3 = new MySqlCommand(comstr3, myConnection);
-            MySqlDataReader reader3 = com3.ExecuteReader();
+            string idT = "SELECT `id` FROM `teacher` WHERE (surname = '" + nameT[0] + "' AND name = '" + nameT[1] + "' AND middle_name = '" + nameT[2] + "')";
 
-            string idT = "";
-            while (reader3.Read())
-            {
-                idT = reader3[0].ToString();
-            }
-            reader3.Close();
-
-            string comStr4 =
+            string comStr =
                 "INSERT INTO `department`.`list` (`discipline` ,`group` ,`type` ,`teacher`)" +
-                "VALUES('" + idD + "', '" + idG + "', '" + type + "', '" + idT + "')";
-            MySqlCommand com4 = new MySqlCommand(comStr4, myConnection);
-            com4.ExecuteNonQuery();
+                "VALUES((" + idD + "), (" + idG + "), '" + type + "', (" + idT + "))";
+            MySqlCommand com = new MySqlCommand(comStr, myConnection);
+            com.ExecuteNonQuery();
         }
         ~ClassList()
         {
@@ -848,7 +809,7 @@ namespace TaskForExam
             MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
             com1.ExecuteNonQuery();
 
-            string comstr2 = "SELECT * FROM pers_teacher";
+            string comstr2 = "SELECT `id` FROM pers_teacher";
             MySqlCommand com2 = new MySqlCommand(comstr2, myConnection);
             MySqlDataReader reader1 = com2.ExecuteReader();
 
@@ -1114,7 +1075,7 @@ namespace TaskForExam
             MySqlCommand com1 = new MySqlCommand(comStr1, myConnection);
             com1.ExecuteNonQuery();
 
-            string comstr2 = "SELECT * FROM pers_student";
+            string comstr2 = "SELECT `id` FROM pers_student";
             MySqlCommand com2 = new MySqlCommand(comstr2, myConnection);
             MySqlDataReader reader1 = com2.ExecuteReader();
 
@@ -1125,22 +1086,22 @@ namespace TaskForExam
             }
             reader1.Close();
 
-            string comstr3 = "SELECT * FROM `group`";
-            MySqlCommand com3 = new MySqlCommand(comstr3, myConnection);
-            MySqlDataReader reader2 = com3.ExecuteReader();
+            string idG = "SELECT `id` FROM `group` WHERE `number` = '" + group.Text + "'";
+            //MySqlCommand com3 = new MySqlCommand(comstr3, myConnection);
+            //MySqlDataReader reader2 = com3.ExecuteReader();
 
-            string idG = "";
-            while (reader2.Read())
-            {
-                if (reader2[1].ToString() == group.Text) idG = reader2[0].ToString();
-            }
-            reader2.Close();
+            //string idG = "";
+            //while (reader2.Read())
+            //{
+            //    if (reader2[1].ToString() == group.Text) idG = reader2[0].ToString();
+            //}
+            //reader2.Close();
 
-            string comStr7 =
+            string comStr3 =
                 "INSERT INTO `department`.`student` (`id`, `surname` ,`name` ,`middle_name` ,`group` ,`year`)" +
-                "VALUES('" + id + "', '" + surname.Text + "', '" + name.Text + "', '" + middle_name.Text + "', '" + idG + "', '" + year.Text + "')";
-            MySqlCommand com7 = new MySqlCommand(comStr7, myConnection);
-            com7.ExecuteNonQuery();
+                "VALUES('" + id + "', '" + surname.Text + "', '" + name.Text + "', '" + middle_name.Text + "', (" + idG + "), '" + year.Text + "')";
+            MySqlCommand com3 = new MySqlCommand(comStr3, myConnection);
+            com3.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -1150,37 +1111,27 @@ namespace TaskForExam
         /// <param name="group">Номер группы</param>
         public void ShowGroup(DataGrid table, string group)
         {
-            string comstr1 = "SELECT * FROM `group`";
-            MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
-            MySqlDataReader reader1 = com1.ExecuteReader();
+            string idG = "SELECT `id` FROM `group` WHERE `number` = '" + group + "'";
 
-            string idG = "";
-            while (reader1.Read())
-            {
-                if (reader1[1].ToString() == group) idG = reader1[0].ToString();
-            }
-            reader1.Close();
-
-            string comStr2 = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
+            string comStr = "SELECT a.surname, a.name, a.middle_name, b.number, a.year " +
                 "FROM `student` a " +
                 "LEFT OUTER JOIN `group` b ON b.id = a.group " +
-                "WHERE a.group = '" + idG + "' " +
+                "WHERE a.group = (" + idG + ") " +
                 "ORDER BY a.surname, a.name, a.middle_name";
-            MySqlCommand com2 = new MySqlCommand(comStr2, myConnection);
-            MySqlDataReader reader2 = com2.ExecuteReader();
+            MySqlCommand com = new MySqlCommand(comStr, myConnection);
+            MySqlDataReader reader = com.ExecuteReader();
 
-            while (reader2.Read())
+            while (reader.Read())
             {
                 table.Items.Add(new columnStudent()
                 {
-                    surname = reader2[0].ToString(),
-                    name = reader2[1].ToString(),
-                    middle_name = reader2[2].ToString(),
-                    group = reader2[3].ToString(),
-                    year = reader2[4].ToString()
+                    surname = reader[0].ToString(),
+                    name = reader[1].ToString(),
+                    middle_name = reader[2].ToString(),
+                    group = reader[3].ToString(),
+                    year = reader[4].ToString()
                 });
             }
-
         }
 
         /// <summary>
@@ -1214,21 +1165,21 @@ namespace TaskForExam
         /// <param name="group"></param>
         public void ShowPersGroup(DataGrid table, string group)
         {
-            string comstr1 = "SELECT * FROM `group`";
-            MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
-            MySqlDataReader reader1 = com1.ExecuteReader();
+            string idG = "SELECT `id` FROM `group` WHERE `number` = '" + group + "'";
+            //MySqlCommand com1 = new MySqlCommand(comstr1, myConnection);
+            //MySqlDataReader reader1 = com1.ExecuteReader();
 
-            string idG = "";
-            while (reader1.Read())
-            {
-                if (reader1[1].ToString() == group) idG = reader1[0].ToString();
-            }
-            reader1.Close();
+            //string idG = "";
+            //while (reader1.Read())
+            //{
+            //    if (reader1[1].ToString() == group) idG = reader1[0].ToString();
+            //}
+            //reader1.Close();
 
             string comStr = "SELECT a.surname, a.name, a.middle_name, b.series, b.number, b.sex, b.city, b.street, b.home, b.flat, b.phone_number " +
             "FROM `student` a " +
             "LEFT OUTER JOIN `pers_student` b ON b.id = a.id " +
-            "WHERE a.group = '" + idG + "' " +
+            "WHERE a.group = (" + idG + ") " +
             "ORDER BY a.surname, a.name, a.middle_name";
             MySqlCommand com = new MySqlCommand(comStr, myConnection);
             MySqlDataReader reader = com.ExecuteReader();

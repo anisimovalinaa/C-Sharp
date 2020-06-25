@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:TaskForExam"
       mc:Ignorable="d" 
       d:DesignHeight="569" d:DesignWidth="940"
-      Title="Student" FontFamily="Times New Roman" FontSize="15">
+      Title="Студенты" FontFamily="Times New Roman" FontSize="15">
 
     <Grid>
         <DataGrid x:Name="tableStudent" HorizontalAlignment="Left" Height="510" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="15"  FontFamily="Times New Roman">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=surname}" ClipboardContentBinding="{x:Null}" Header="Фамилия" CanUserResize="False" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Path=name}" ClipboardContentBinding="{x:Null}" Header="Имя" CanUserResize="False" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Path=middle_name}" ClipboardContentBinding="{x:Null}" Header="Отчество" CanUserResize="False" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=middle_name}" ClipboardContentBinding="{x:Null}" Header="Отчество" CanUserResize="False" Width="130"/>
                 <DataGridTextColumn Binding="{Binding Path=group}" ClipboardContentBinding="{x:Null}" Header="Группа" CanUserResize="False" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Path=year}" ClipboardContentBinding="{x:Null}" Header="Год поступления" CanUserResize="False" Width="120"/>
             </DataGrid.Columns>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskForExam"
         mc:Ignorable="d"
-        Title="Добавить дисциплину" Height="294.667" Width="402" FontFamily="Times New Roman" FontSize="15">
+        Title="Добавление дисциплины" Height="294.667" Width="402" FontFamily="Times New Roman" FontSize="15">
     <Grid>
         <Label Content="Название:" HorizontalAlignment="Left" Margin="42,30,0,0" VerticalAlignment="Top"/>
         <Label Content="Колличество часов:" HorizontalAlignment="Left" Margin="42,92,0,0" VerticalAlignment="Top"/>
